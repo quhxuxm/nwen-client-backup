@@ -31,7 +31,9 @@
     "@fortawesome/free-regular-svg-icons": "^5.5.0",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
-    "@fortawesome/angular-fontawesome": "^0.3.0"
+    "@fortawesome/angular-fontawesome": "^0.3.0",
+    "@ngx-translate/core": "^11.0.0",
+    "@ngx-translate/http-loader": "^4.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.0",

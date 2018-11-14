@@ -5,16 +5,24 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './component/app.component';
 import {AppMatlibModule} from './app.matlib.module';
-import {CardComponent} from './component/card/card.component';
+import {AppComponent} from './component/app.component';
+import {CardContainerComponent} from './component/common/card-container/card-container.component';
+import {CardComponent} from './component/common/card/card.component';
+import {HomeComponent} from './component/home/home.component';
+import {LoginComponent} from './component/login/login.component';
 import {NavigatorComponent} from './component/navigator/navigator.component';
+import {RegisterComponent} from './component/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigatorComponent,
-    CardComponent
+    CardComponent,
+    CardContainerComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
