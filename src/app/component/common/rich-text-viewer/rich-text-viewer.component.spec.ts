@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardContainerComponent } from './card-container.component';
+import { RichTextViewerComponent } from './rich-text-viewer.component';
 
-describe('CardContainerComponent', () => {
-  let component: CardContainerComponent;
-  let fixture: ComponentFixture<CardContainerComponent>;
+describe('RichTextViewerComponent', () => {
+  let component: RichTextViewerComponent;
+  let fixture: ComponentFixture<RichTextViewerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardContainerComponent ]
+      declarations: [ RichTextViewerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardContainerComponent);
+    fixture = TestBed.createComponent(RichTextViewerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

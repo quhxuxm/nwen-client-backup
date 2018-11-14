@@ -7,8 +7,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {AppMatlibModule} from './app.matlib.module';
 import {AppComponent} from './component/app.component';
-import {CardContainerComponent} from './component/common/card-container/card-container.component';
 import {CardComponent} from './component/common/card/card.component';
+import {JumbotronComponent} from './component/common/jumbotron/jumbotron.component';
+import {ReactiveContainerComponent} from './component/common/reactive-container/reactive-container.component';
+import {RichTextEditorComponent} from './component/common/rich-text-editor/rich-text-editor.component';
+import {RichTextViewerComponent} from './component/common/rich-text-viewer/rich-text-viewer.component';
+import {SeperatorComponent} from './component/common/seperator/seperator.component';
 import {HomeComponent} from './component/home/home.component';
 import {LoginComponent} from './component/login/login.component';
 import {NavigatorComponent} from './component/navigator/navigator.component';
@@ -19,7 +23,11 @@ import {RegisterComponent} from './component/register/register.component';
     AppComponent,
     NavigatorComponent,
     CardComponent,
-    CardContainerComponent,
+    JumbotronComponent,
+    RichTextEditorComponent,
+    RichTextViewerComponent,
+    ReactiveContainerComponent,
+    SeperatorComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent
