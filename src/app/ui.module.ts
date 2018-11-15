@@ -7,6 +7,7 @@ import {ReactiveContainerComponent} from './component/common/reactive-container/
 import {RichTextEditorComponent} from './component/common/rich-text-editor/rich-text-editor.component';
 import {RichTextViewerComponent} from './component/common/rich-text-viewer/rich-text-viewer.component';
 import {SeperatorComponent} from './component/common/seperator/seperator.component';
+import {FooterComponent} from './component/footer/footer.component';
 import {HomeComponent} from './component/home/home.component';
 import {LoginComponent} from './component/login/login.component';
 import {NavigatorComponent} from './component/navigator/navigator.component';
@@ -23,7 +24,8 @@ import {RegisterComponent} from './component/register/register.component';
     SeperatorComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import {RegisterComponent} from './component/register/register.component';
     SeperatorComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ]
 })
 export class UiModule {
