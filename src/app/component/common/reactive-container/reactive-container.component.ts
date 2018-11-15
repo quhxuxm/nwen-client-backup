@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-reactive-container',
+  selector: 'nwen-common-reactive-container',
   templateUrl: './reactive-container.component.html',
   styleUrls: ['./reactive-container.component.scss']
 })

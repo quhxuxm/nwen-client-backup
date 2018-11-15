@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-rich-text-viewer',
+  selector: 'nwen-common-rich-text-viewer',
   templateUrl: './rich-text-viewer.component.html',
   styleUrls: ['./rich-text-viewer.component.scss']
 })

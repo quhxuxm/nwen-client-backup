@@ -1,7 +1,7 @@
 /// <reference >
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {GlobalConstant} from '../app-common.module';
+import {GlobalConstant} from '../constant';
 import {ExecutorRequest} from './executor-request';
 import {ExecutorResponse} from './executor-response';
 import {ExceptionResponsePayload} from './payload/response/exception-response-payload';

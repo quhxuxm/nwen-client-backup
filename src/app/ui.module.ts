@@ -1,12 +1,6 @@
-import {LayoutModule} from '@angular/cdk/layout';
-import {HttpClientModule} from '@angular/common/http';
+import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AppRoutingModule} from './app-routing.module';
-import {AppMatlibModule} from './app.matlib.module';
-import {AppComponent} from './component/app.component';
+import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {CardComponent} from './component/common/card/card.component';
 import {JumbotronComponent} from './component/common/jumbotron/jumbotron.component';
 import {ReactiveContainerComponent} from './component/common/reactive-container/reactive-container.component';
@@ -20,7 +14,6 @@ import {RegisterComponent} from './component/register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
     NavigatorComponent,
     CardComponent,
     JumbotronComponent,
@@ -33,15 +26,30 @@ import {RegisterComponent} from './component/register/register.component';
     HomeComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    AppMatlibModule
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
-  bootstrap: [AppComponent]
+  exports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    NavigatorComponent,
+    CardComponent,
+    JumbotronComponent,
+    RichTextEditorComponent,
+    RichTextViewerComponent,
+    ReactiveContainerComponent,
+    SeperatorComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent
+  ]
 })
-export class AppModule {
+export class UiModule {
 }

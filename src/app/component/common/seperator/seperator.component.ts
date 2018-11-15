@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-seperator',
+  selector: 'nwen-common-seperator',
   templateUrl: './seperator.component.html',
   styleUrls: ['./seperator.component.scss']
 })
