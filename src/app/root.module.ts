@@ -8,11 +8,11 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {CardComponent} from './component/common/card/card.component';
 import {JumbotronComponent} from './component/common/jumbotron/jumbotron.component';
-import {LogoComponent} from './component/common/logo/logo.component';
 import {ReactiveContainerComponent} from './component/common/reactive-container/reactive-container.component';
 import {RichTextEditorComponent} from './component/common/rich-text-editor/rich-text-editor.component';
 import {RichTextViewerComponent} from './component/common/rich-text-viewer/rich-text-viewer.component';
 import {SeperatorComponent} from './component/common/seperator/seperator.component';
+import {SvgIconComponent} from './component/common/svg-icon/svg-icon.component';
 import {FooterComponent} from './component/footer/footer.component';
 import {HomeComponent} from './component/home/home.component';
 import {LoginComponent} from './component/login/login.component';
@@ -39,7 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     HomeComponent,
     FooterComponent,
-    LogoComponent
+    SvgIconComponent
   ],
   imports: [
     BrowserModule,
