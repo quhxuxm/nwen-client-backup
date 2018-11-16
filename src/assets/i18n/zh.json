@@ -1,5 +1,7 @@
 {
   "root.title":"NWen - 写出你自己的故事",
+  "header.loginOrRegister":"注册 / 登陆",
+  "header.writeArticle":"写文章",
   "register.username.placeholder": "电子邮箱",
   "register.username.hint": "请输入合法的邮箱地址",
   "register.username.error.client.required": "请输入邮箱地址",

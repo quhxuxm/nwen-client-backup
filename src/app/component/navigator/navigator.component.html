@@ -1,31 +1,6 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" [fixedInViewport]="true" [mode]="(isHandset$ | async) ? 'over' : 'side'"
-               [opened]="!(isHandset$ | async)">
-    <mat-toolbar>NWen</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content class="sidenav-content">
-    <mat-toolbar color="primary" class="sidenav-content-toolbar">
-      <button type="button" mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="spacer"></span>
-      <div class="author-actions-container">
-        <button type="button" mat-icon-button>
-          <mat-icon>home</mat-icon>
-        </button>
-        <button type="button" mat-icon-button>
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button type="button" mat-icon-button>
-          <mat-icon>menu</mat-icon>
-        </button>
-      </div>
-    </mat-toolbar>
-    <nwen-home></nwen-home>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<header>
+  <nwen-logo routerLink="/"></nwen-logo>
+  <span class="flex-spacer"></span>
+  <a class="registerOrLoginButton" href="#">{{"header.loginOrRegister" | translate}}</a>
+  <a class="writeArticleButton"  href="#">{{"header.writeArticle" | translate}}</a>
+</header>
