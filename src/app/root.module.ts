@@ -2,17 +2,18 @@ import {LayoutModule} from '@angular/cdk/layout';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {CardComponent} from './component/common/card/card.component';
 import {JumbotronComponent} from './component/common/jumbotron/jumbotron.component';
+import {LogoComponent} from './component/common/logo/logo.component';
 import {ReactiveContainerComponent} from './component/common/reactive-container/reactive-container.component';
 import {RichTextEditorComponent} from './component/common/rich-text-editor/rich-text-editor.component';
 import {RichTextViewerComponent} from './component/common/rich-text-viewer/rich-text-viewer.component';
 import {SeperatorComponent} from './component/common/seperator/seperator.component';
-import {SvgIconComponent} from './component/common/svg-icon/svg-icon.component';
 import {FooterComponent} from './component/footer/footer.component';
 import {HomeComponent} from './component/home/home.component';
 import {LoginComponent} from './component/login/login.component';
@@ -36,14 +37,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveContainerComponent,
     SeperatorComponent,
     LoginComponent,
+    LogoComponent,
     RegisterComponent,
     HomeComponent,
-    FooterComponent,
-    SvgIconComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
     LayoutModule,
     HttpClientModule,
     ReactiveFormsModule,

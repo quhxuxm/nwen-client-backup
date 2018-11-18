@@ -1,6 +1,31 @@
-<header>
-  <nwen-svg-icon name="icon-align-center"></nwen-svg-icon>
-  <span class="flex-spacer"></span>
-  <a class="registerOrLoginButton" href="#">{{"header.loginOrRegister" | translate}}</a>
-  <a class="writeArticleButton"  href="#">{{"header.writeArticle" | translate}}</a>
-</header>
+<mat-sidenav-container class="navigator-container">
+  <mat-sidenav #drawer class="side-navigator" fixedInViewport="true"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="'push'"
+               [opened]="false">
+    <mat-toolbar>
+      <span class="logo-side-navigator-container">
+        <nwen-logo></nwen-logo>
+      </span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="top-navigator">
+      <button type="button" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="logo-top-navigator-container">
+        <nwen-logo></nwen-logo>
+      </span>
+      <span class="flex-spacer"></span>
+      <a class="login-or-register-btn" href="#">{{'top-navigator.btn.login-or-register' | translate}}</a>
+      <a class="write-article-btn"  href="#">{{'top-navigator.btn.write-article' | translate}}</a>
+    </mat-toolbar>
+    <section class="main-content"></section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,14 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~src/common";
-
-body {
+html, body {
   font-family: $FONT_FAMILY;
-  font-size: 14px;
-  color: $PALETTE_COLOR_LEVEL1;
+  font-size: $FONT_SIZE_LEVEL0;
+  color: $COLOR_LEVEL4;
+  background-color: $COLOR_LEVEL0;
+  height: 100%;
 }
 span.flex-spacer {
   flex-grow: 1;
+}
+a {
+  text-decoration: none;
 }
 a:active {
   color: inherit;
@@ -16,5 +20,6 @@ a:active {
 a:visited {
   color: inherit;
 }
+
 
 

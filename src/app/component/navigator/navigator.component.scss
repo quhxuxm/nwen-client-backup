@@ -1,26 +1,69 @@
 @import "~src/common";
+.navigator-container {
+  height: 100%;
+  background-color: $COLOR_LEVEL1;
 
-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: $PALETTE_COLOR_LEVEL4;
-  a.registerOrLoginButton {
-    text-decoration: none;
-    outline: none;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    padding: 15px;
+  .side-navigator {
+    width: 300px;
+    .mat-toolbar {
+      background: inherit;
+      .logo-side-navigator-container {
+        width: 120px;
+      }
+    }
+
+    .mat-toolbar.mat-primary {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
   }
-  a.writeArticleButton {
-    text-decoration: none;
-    outline: none;
-    text-align: center;
+
+  .top-navigator {
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: sticky;
+    z-index: 998;
+    top: 0;
+    height: 72px;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-items: center;
-    padding: 15px;
+    justify-items: start;
+
+    .logo-top-navigator-container {
+      width: 90px;
+      margin-left: calc(50% - 60px);
+    }
+    .login-or-register-btn{
+      font-size: $FONT_SIZE_LEVEL0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+    .write-article-btn{
+      font-size: $FONT_SIZE_LEVEL0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
   }
+
+  section.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    align-items: start;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
 }
+
+
+
+
