@@ -1,7 +1,25 @@
-$FONT_FAMILY: "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Helvetica, Arial, Verdana, sans-serif;
+$FONT_FAMILY: "Microsoft YaHei", "微软雅黑", "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", Helvetica, Arial, Verdana, sans-serif;
 $COLOR_LEVEL0: #FFFFFF;
-$COLOR_LEVEL1: #f0f5f9;
-$COLOR_LEVEL2: #c9d6df;
-$COLOR_LEVEL3: #52616b;
-$COLOR_LEVEL4: #1e2022;
-$FONT_SIZE_LEVEL0: 14px;
+/**
+Border color
+ */
+$COLOR_LEVEL1: #EEEEEE;
+/**
+High light color
+ */
+$COLOR_LEVEL2: #4ECCA3;
+/**
+High light hover color
+ */
+$COLOR_LEVEL3: #4BBE95;
+/**
+Font high color
+ */
+$COLOR_LEVEL4: #393E46;
+/**
+Font color
+ */
+$COLOR_LEVEL5: #232931;
+
+$FONT_SIZE_LEVEL0: 12px;
+$FONT_SIZE_LEVEL1: 14px;

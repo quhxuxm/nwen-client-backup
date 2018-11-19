@@ -1,14 +1,17 @@
 @import "~src/common";
 .navigator-container {
   height: 100%;
-  background-color: $COLOR_LEVEL1;
+  background-color: $COLOR_LEVEL0;
 
   .side-navigator {
     width: 300px;
     .mat-toolbar {
       background: inherit;
-      .logo-side-navigator-container {
-        width: 120px;
+      .side-navigator-logo-container {
+        width: 90px;
+        display: flex;
+        align-items: center;
+        justify-items: center;
       }
     }
 
@@ -30,26 +33,81 @@
     flex-direction: row;
     align-items: center;
     justify-items: start;
+    background-color: $COLOR_LEVEL0;
+    border-bottom: 1px solid $COLOR_LEVEL1;
+    padding-right: 0;
+    padding-left: 0;
 
-    .logo-top-navigator-container {
-      width: 90px;
-      margin-left: calc(50% - 60px);
+    .top-navigator-btn-more {
+      background-color: #FFFFFF;
+      border: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      cursor: pointer;
+      outline: none;
+      padding-left: 25px;
+      padding-right: 25px;
+      height: 100%;
+      border-right: 1px solid $COLOR_LEVEL1;
+      transition: 0.5s;
+      .top-navigator-btn-more-icon {
+        transition: 0.5s;
+      }
+      .top-navigator-btn-more-label {
+        transition: 0.5s;
+        padding-left: 10px;
+        font-size: $FONT_SIZE_LEVEL1;
+      }
     }
-    .login-or-register-btn{
-      font-size: $FONT_SIZE_LEVEL0;
+    .top-navigator-btn-more:hover {
+      .top-navigator-btn-more-icon {
+        color: $COLOR_LEVEL2;
+      }
+      .top-navigator-btn-more-label {
+        color: $COLOR_LEVEL2;
+      }
+    }
+
+    .top-navigator-logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72px;
+      cursor: pointer;
+    }
+    .join-us-label {
+      font-size: $FONT_SIZE_LEVEL1;
+      padding-left: 25px;
       height: 100%;
       display: flex;
       align-items: center;
-      padding-left: 25px;
-      padding-right: 25px;
     }
-    .write-article-btn{
-      font-size: $FONT_SIZE_LEVEL0;
+    .login-or-register-btn {
+      font-size: $FONT_SIZE_LEVEL1;
       height: 100%;
       display: flex;
       align-items: center;
-      padding-left: 25px;
       padding-right: 25px;
+      font-weight: bold;
+    }
+    .write-article-btn {
+      font-size: $FONT_SIZE_LEVEL1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 35px;
+      padding-right: 35px;
+      border-left: 1px solid $COLOR_LEVEL1;
+      background-color: $COLOR_LEVEL2;
+      transition: 0.5s;
+      color: $COLOR_LEVEL0;
+      font-weight: bold;
+    }
+    .write-article-btn:hover {
+      background-color: $COLOR_LEVEL3;
+      color: $COLOR_LEVEL0;
     }
   }
 

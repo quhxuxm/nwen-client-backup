@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Title} from '@angular/platform-browser';
+import {MatIconRegistry} from '@angular/material';
+import {DomSanitizer, Title} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -10,11 +11,13 @@ import {TranslateService} from '@ngx-translate/core';
 export class RootComponent implements OnInit {
   title = 'NWen';
 
-  constructor(private translate: TranslateService, private titleService: Title) {
+  constructor(private translate: TranslateService, private titleService: Title, private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer) {
     translate.addLangs(['zh', 'en']);
     translate.setDefaultLang('en');
     const languageOfBrowser = translate.getBrowserLang();
     translate.use(languageOfBrowser);
+    this.matIconRegistry.addSvgIcon('nwen-logo', this.domSanitizer.bypassSecurityTrustResourceUrl('../../assets/logo.svg'));
   }
 
   ngOnInit(): void {

@@ -4,7 +4,7 @@
                [mode]="'push'"
                [opened]="false">
     <mat-toolbar>
-      <span class="logo-side-navigator-container">
+      <span class="side-navigator-logo-container">
         <nwen-logo></nwen-logo>
       </span>
     </mat-toolbar>
@@ -16,15 +16,17 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="top-navigator">
-      <button type="button" mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="logo-top-navigator-container">
+      <span class="top-navigator-btn-more" (click)="drawer.toggle()">
+        <mat-icon class="top-navigator-btn-more-icon">menu</mat-icon>
+        <span class="top-navigator-btn-more-label">{{'top-navigator.btn.more' | translate}}</span>
+      </span>
+      <span class="top-navigator-logo-container">
         <nwen-logo></nwen-logo>
       </span>
       <span class="flex-spacer"></span>
+      <span class="join-us-label">{{'top-navigator.label.join-us' | translate}}</span>
       <a class="login-or-register-btn" href="#">{{'top-navigator.btn.login-or-register' | translate}}</a>
-      <a class="write-article-btn"  href="#">{{'top-navigator.btn.write-article' | translate}}</a>
+      <a class="write-article-btn" href="#">{{'top-navigator.btn.write-article' | translate}}</a>
     </mat-toolbar>
     <section class="main-content"></section>
   </mat-sidenav-content>

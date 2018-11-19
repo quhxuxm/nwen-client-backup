@@ -1,7 +1,19 @@
-:host{
-  display: block;
+:host {
+  display: inline-block;
   width: 100%;
 }
-image{
+span.logo-icon-wrapper {
+  display: flex;
   width: 100%;
+  align-items: center;
+  justify-items: center;
+  .logo-icon {
+    width: 100%;
+    display: block;
+    svg {
+      width: 100%;
+    }
+  }
 }
+
+
