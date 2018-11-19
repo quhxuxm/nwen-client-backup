@@ -4,30 +4,63 @@
                [mode]="'push'"
                [opened]="false">
     <mat-toolbar>
-      <span class="side-navigator-logo-container">
+      <span class="logo-container">
         <nwen-logo></nwen-logo>
       </span>
     </mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+    <mat-nav-list class="btn-list">
+      <a mat-list-item href="#">
+        {{'side-navigator.btn.login-or-register'|translate}}
+      </a>
+      <a mat-list-item href="#">
+        {{'side-navigator.btn.home'|translate}}
+      </a>
+      <a mat-list-item href="#">
+        {{'side-navigator.btn.hot-anthologies' | translate}}
+      </a>
+      <a mat-list-item href="#">
+        {{'side-navigator.btn.recent-update-anthologies' | translate}}
+      </a>
+      <a mat-list-item href="#">
+        {{'side-navigator.btn.hot-articles' | translate}}
+      </a>
+      <a mat-list-item href="#">
+        {{'side-navigator.btn.about' | translate}}
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar class="top-navigator">
-      <span class="top-navigator-btn-more" (click)="drawer.toggle()">
-        <mat-icon class="top-navigator-btn-more-icon">menu</mat-icon>
-        <span class="top-navigator-btn-more-label">{{'top-navigator.btn.more' | translate}}</span>
+    <mat-toolbar class="primary-top-navigator">
+      <span class="btn-more" (click)="drawer.toggle()">
+        <mat-icon class="icon">menu</mat-icon>
+        <span class="label">{{'primary-top-navigator.btn.more' | translate}}</span>
       </span>
-      <span class="top-navigator-logo-container">
+      <span class="show-secondary-top-navigator-btn">
+        <mat-icon class="icon">apps</mat-icon>
+      </span>
+      <span class="logo-container">
         <nwen-logo></nwen-logo>
       </span>
       <span class="flex-spacer"></span>
-      <span class="join-us-label">{{'top-navigator.label.join-us' | translate}}</span>
-      <a class="login-or-register-btn" href="#">{{'top-navigator.btn.login-or-register' | translate}}</a>
-      <a class="write-article-btn" href="#">{{'top-navigator.btn.write-article' | translate}}</a>
+      <span class="join-us-label">{{'primary-top-navigator.label.join-us' | translate}}</span>
+      <a class="login-or-register-btn" href="#">{{'primary-top-navigator.btn.login-or-register' | translate}}</a>
+      <a class="write-article-btn" href="#">{{'primary-top-navigator.btn.write-article' | translate}}</a>
     </mat-toolbar>
-    <section class="main-content"></section>
+    <mat-toolbar class="secondary-top-navigator">
+      <span class="search-btn">
+        <mat-icon class="icon">search</mat-icon>
+      </span>
+      <div class="filter-container">
+        <span class="filter-by-tags-label">
+          {{'secondary-top-navigator.label.filter-by-tags'|translate}}
+        </span>
+        <a class="tag">TAG1</a>
+        <a class="tag">TAG2</a>
+        <a class="tag">TAG3</a>
+      </div>
+    </mat-toolbar>
+    <section class="main-content">
+      <nwen-home></nwen-home>
+    </section>
   </mat-sidenav-content>
 </mat-sidenav-container>

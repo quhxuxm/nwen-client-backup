@@ -7,8 +7,10 @@
     width: 300px;
     border-right: 1px solid $COLOR_LEVEL1;
     .mat-toolbar {
-      background: inherit;
-      .side-navigator-logo-container {
+      background: $COLOR_LEVEL0;
+      height: 72px;
+      border-bottom: 1px solid $COLOR_LEVEL1;
+      .logo-container {
         width: 90px;
         display: flex;
         align-items: center;
@@ -21,9 +23,31 @@
       top: 0;
       z-index: 1;
     }
+
+    .btn-list {
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      padding: 0;
+
+      a {
+        flex-shrink: 1;
+        font-size: $FONT_SIZE_LEVEL1;
+        border-bottom: 1px solid $COLOR_LEVEL1;
+        transition: 0.5s;
+        height: 72px;
+      }
+
+      a:hover {
+        background-color: $COLOR_LEVEL2;
+        color: $COLOR_LEVEL0;
+      }
+    }
   }
 
-  .top-navigator {
+  .primary-top-navigator {
     flex-grow: 0;
     flex-shrink: 0;
     position: sticky;
@@ -39,10 +63,10 @@
     padding-right: 0;
     padding-left: 0;
 
-    .top-navigator-btn-more {
+    .btn-more {
       background-color: #FFFFFF;
       border: none;
-      font-size: 14px;
+      font-size: $FONT_SIZE_LEVEL1;
       display: flex;
       align-items: center;
       justify-items: center;
@@ -53,29 +77,37 @@
       height: 100%;
       border-right: 1px solid $COLOR_LEVEL1;
       transition: 0.5s;
-      .top-navigator-btn-more-icon {
+      .icon {
         transition: 0.5s;
       }
-      .top-navigator-btn-more-label {
+      .label {
         transition: 0.5s;
         padding-left: 10px;
         font-size: $FONT_SIZE_LEVEL1;
       }
     }
-    .top-navigator-btn-more:hover {
-      .top-navigator-btn-more-icon {
+    .btn-more:hover {
+      .icon {
         color: $COLOR_LEVEL2;
       }
-      .top-navigator-btn-more-label {
+      .label {
         color: $COLOR_LEVEL2;
       }
     }
 
-    .top-navigator-logo-container {
+    .show-secondary-top-navigator-btn {
+      padding-left: 25px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .logo-container {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      width: 72px;
+      width: 90px;
       cursor: pointer;
     }
     .join-us-label {
@@ -104,11 +136,77 @@
       background-color: $COLOR_LEVEL2;
       transition: 0.5s;
       color: $COLOR_LEVEL0;
-      font-weight: bold;
     }
     .write-article-btn:hover {
       background-color: $COLOR_LEVEL3;
       color: $COLOR_LEVEL0;
+    }
+  }
+
+  .secondary-top-navigator {
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: sticky;
+    z-index: 998;
+    top: 0;
+    height: 72px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: start;
+    background-color: $COLOR_LEVEL0;
+    border-bottom: 1px solid $COLOR_LEVEL1;
+    padding-right: 0;
+    padding-left: 0;
+    .search-btn {
+      padding-left: 25px;
+      padding-right: 25px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      border-right: 1px solid $COLOR_LEVEL1;
+      transition: 0.5s;
+    }
+    .search-btn:hover{
+      background-color: $COLOR_LEVEL2;
+      color: $COLOR_LEVEL0;
+    }
+
+    .filter-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      .filter-by-tags-label {
+        padding-left: 25px;
+        padding-right: 25px;
+        font-size: $FONT_SIZE_LEVEL0;
+        font-weight: bold;
+        border-right: 1px solid $COLOR_LEVEL1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      a.tag{
+        padding-left: 25px;
+        padding-right: 25px;
+        font-size: $FONT_SIZE_LEVEL0;
+        border-right: 1px solid $COLOR_LEVEL1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.5s;
+        text-decoration: underline;
+      }
+
+      a.tag:hover{
+        background-color: $COLOR_LEVEL2;
+        color: $COLOR_LEVEL0;
+      }
     }
   }
 
