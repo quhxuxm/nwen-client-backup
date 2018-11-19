@@ -17,7 +17,10 @@ import {SeperatorComponent} from './component/common/seperator/seperator.compone
 import {FooterComponent} from './component/footer/footer.component';
 import {HomeComponent} from './component/home/home.component';
 import {LoginComponent} from './component/login/login.component';
-import {NavigatorComponent} from './component/navigator/navigator.component';
+import {NavigatorContainerComponent} from './component/navigator-container/navigator-container.component';
+import {PrimaryTopNavigatorComponent} from './component/navigator-container/primary-top-navigator/primary-top-navigator.component';
+import {SecondaryTopNavigatorComponent} from './component/navigator-container/secondary-top-navigator/secondary-top-navigator.component';
+import {SideNavigatorComponent} from './component/navigator-container/side-navigator/side-navigator.component';
 import {RegisterComponent} from './component/register/register.component';
 import {RootComponent} from './component/root.component';
 import {RoutingModule} from './routing.module';
@@ -29,7 +32,10 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     RootComponent,
-    NavigatorComponent,
+    NavigatorContainerComponent,
+    PrimaryTopNavigatorComponent,
+    SecondaryTopNavigatorComponent,
+    SideNavigatorComponent,
     CardComponent,
     JumbotronComponent,
     RichTextEditorComponent,

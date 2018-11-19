@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'nwen-navigator',
-  templateUrl: './navigator.component.html',
-  styleUrls: ['./navigator.component.scss'],
+  selector: 'nwen-navigator-container',
+  templateUrl: './navigator-container.component.html',
+  styleUrls: ['./navigator-container.component.scss'],
 })
-export class NavigatorComponent {
+export class NavigatorContainerComponent {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

@@ -1,0 +1,20 @@
+<mat-sidenav-container class="navigator-container">
+  <mat-sidenav #drawer class="side-navigator" fixedInViewport="true"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="'push'"
+               [opened]="false">
+    <mat-toolbar>
+      <span class="logo-container">
+        <nwen-logo></nwen-logo>
+      </span>
+    </mat-toolbar>
+    <nwen-side-navigator></nwen-side-navigator>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <nwen-primary-top-navigator></nwen-primary-top-navigator>
+    <nwen-secondary-top-navigator></nwen-secondary-top-navigator>
+    <section class="main-content">
+      <nwen-home></nwen-home>
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

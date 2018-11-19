@@ -9,15 +9,15 @@ import {
   MatToolbarModule,
 } from '@angular/material';
 
-import { NavigatorComponent } from './navigator.component';
+import { NavigatorContainerComponent } from './navigator-container.component';
 
-describe('NavigatorComponent', () => {
-  let component: NavigatorComponent;
-  let fixture: ComponentFixture<NavigatorComponent>;
+describe('NavigatorContainerComponent', () => {
+  let component: NavigatorContainerComponent;
+  let fixture: ComponentFixture<NavigatorContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigatorComponent],
+      declarations: [NavigatorContainerComponent],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -31,7 +31,7 @@ describe('NavigatorComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavigatorComponent);
+    fixture = TestBed.createComponent(NavigatorContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

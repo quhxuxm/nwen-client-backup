@@ -1,0 +1,47 @@
+@import "~src/common";
+.navigator-container {
+  height: 100%;
+  background-color: $COLOR_LEVEL0;
+
+  .side-navigator {
+    width: 300px;
+    border-right: 1px solid $COLOR_LEVEL1;
+    .mat-toolbar {
+      background: $COLOR_LEVEL0;
+      height: 72px;
+      border-bottom: 1px solid $COLOR_LEVEL1;
+      .logo-container {
+        width: 90px;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+      }
+    }
+
+    .mat-toolbar.mat-primary {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+
+  }
+
+
+
+
+
+  section.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    align-items: start;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+}
+
+
+
+

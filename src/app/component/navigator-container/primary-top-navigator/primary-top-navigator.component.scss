@@ -1,0 +1,96 @@
+@import "~src/common";
+.primary-top-navigator {
+  flex-grow: 0;
+  flex-shrink: 0;
+  position: sticky;
+  z-index: 998;
+  top: 0;
+  height: 72px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: start;
+  background-color: $COLOR_LEVEL0;
+  border-bottom: 1px solid $COLOR_LEVEL1;
+  padding-right: 0;
+  padding-left: 0;
+
+  .btn-more {
+    background-color: #FFFFFF;
+    border: none;
+    font-size: $FONT_SIZE_LEVEL1;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    cursor: pointer;
+    outline: none;
+    padding-left: 25px;
+    padding-right: 25px;
+    height: 100%;
+    border-right: 1px solid $COLOR_LEVEL1;
+    transition: 0.5s;
+    .icon {
+      transition: 0.5s;
+    }
+    .label {
+      transition: 0.5s;
+      padding-left: 10px;
+      font-size: $FONT_SIZE_LEVEL1;
+    }
+  }
+  .btn-more:hover {
+    .icon {
+      color: $COLOR_LEVEL2;
+    }
+    .label {
+      color: $COLOR_LEVEL2;
+    }
+  }
+
+  .show-secondary-top-navigator-btn {
+    padding-left: 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    cursor: pointer;
+  }
+  .join-us-label {
+    font-size: $FONT_SIZE_LEVEL1;
+    padding-left: 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .login-or-register-btn {
+    font-size: $FONT_SIZE_LEVEL1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 25px;
+    font-weight: bold;
+  }
+  .write-article-btn {
+    font-size: $FONT_SIZE_LEVEL1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-left: 1px solid $COLOR_LEVEL1;
+    background-color: $COLOR_LEVEL2;
+    transition: 0.5s;
+    color: $COLOR_LEVEL0;
+  }
+  .write-article-btn:hover {
+    background-color: $COLOR_LEVEL3;
+    color: $COLOR_LEVEL0;
+  }
+}

@@ -1,0 +1,22 @@
+@import "~src/common";
+.btn-list {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  padding: 0;
+
+  a {
+    flex-shrink: 1;
+    font-size: $FONT_SIZE_LEVEL1;
+    border-bottom: 1px solid $COLOR_LEVEL1;
+    transition: 0.5s;
+    height: 72px;
+  }
+
+  a:hover {
+    background-color: $COLOR_LEVEL2;
+    color: $COLOR_LEVEL0;
+  }
+}

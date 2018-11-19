@@ -1,0 +1,16 @@
+<mat-toolbar class="primary-top-navigator">
+      <span class="btn-more" (click)="drawer.toggle()">
+        <mat-icon class="icon">menu</mat-icon>
+        <span class="label">{{'primary-top-navigator.btn.more' | translate}}</span>
+      </span>
+  <span class="show-secondary-top-navigator-btn">
+        <mat-icon class="icon">apps</mat-icon>
+      </span>
+  <span class="logo-container">
+        <nwen-logo></nwen-logo>
+      </span>
+  <span class="flex-spacer"></span>
+  <span class="join-us-label">{{'primary-top-navigator.label.join-us' | translate}}</span>
+  <a class="login-or-register-btn" href="#">{{'primary-top-navigator.btn.login-or-register' | translate}}</a>
+  <a class="write-article-btn" href="#">{{'primary-top-navigator.btn.write-article' | translate}}</a>
+</mat-toolbar>
