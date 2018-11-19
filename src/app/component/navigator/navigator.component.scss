@@ -5,6 +5,7 @@
 
   .side-navigator {
     width: 300px;
+    border-right: 1px solid $COLOR_LEVEL1;
     .mat-toolbar {
       background: inherit;
       .side-navigator-logo-container {
