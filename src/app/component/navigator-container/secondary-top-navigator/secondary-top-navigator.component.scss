@@ -14,6 +14,8 @@
   border-bottom: 1px solid $COLOR_LEVEL1;
   padding-right: 0;
   padding-left: 0;
+  transition: 0.5s;
+
   .search-btn {
     padding-left: 25px;
     padding-right: 25px;
@@ -24,7 +26,7 @@
     border-right: 1px solid $COLOR_LEVEL1;
     transition: 0.5s;
   }
-  .search-btn:hover{
+  .search-btn:hover {
     background-color: $COLOR_LEVEL2;
     color: $COLOR_LEVEL0;
   }
@@ -46,7 +48,7 @@
       align-items: center;
     }
 
-    a.tag{
+    a.tag {
       padding-left: 25px;
       padding-right: 25px;
       font-size: $FONT_SIZE_LEVEL0;
@@ -59,7 +61,7 @@
       text-decoration: underline;
     }
 
-    a.tag:hover{
+    a.tag:hover {
       background-color: $COLOR_LEVEL2;
       color: $COLOR_LEVEL0;
     }

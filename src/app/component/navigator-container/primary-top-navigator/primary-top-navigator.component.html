@@ -1,9 +1,9 @@
 <mat-toolbar class="primary-top-navigator">
-      <span class="btn-more" (click)="drawer.toggle()">
+      <span class="btn-more" (click)="toggleSideNavigator()">
         <mat-icon class="icon">menu</mat-icon>
         <span class="label">{{'primary-top-navigator.btn.more' | translate}}</span>
       </span>
-  <span class="show-secondary-top-navigator-btn">
+  <span class="show-secondary-top-navigator-btn" (click)="toggleSecondaryTopNavigator()">
         <mat-icon class="icon">apps</mat-icon>
       </span>
   <span class="logo-container">
