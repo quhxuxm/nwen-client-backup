@@ -10,10 +10,10 @@ export class PrimaryTopNavigatorComponent implements OnInit {
   @Input()
   sideNavigator: MatSidenav;
   @Output()
-  toggleSecondaryTopNav: EventEmitter;
+  toggleSecondaryTopNavigatorEvent: EventEmitter;
 
   constructor() {
-    this.toggleSecondaryTopNav = new EventEmitter();
+    this.toggleSecondaryTopNavigatorEvent = new EventEmitter<any>();
   }
 
   ngOnInit() {
@@ -24,6 +24,6 @@ export class PrimaryTopNavigatorComponent implements OnInit {
   }
 
   toggleSecondaryTopNavigator() {
-    this.toggleSecondaryTopNav.emit();
+    this.toggleSecondaryTopNavigatorEvent.emit();
   }
 }

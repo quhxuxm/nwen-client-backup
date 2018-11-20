@@ -1,7 +1,8 @@
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {SecondaryTopNavigatorComponent} from './secondary-top-navigator/secondary-top-navigator.component';
 
 @Component({
   selector: 'nwen-navigator-container',
@@ -13,17 +14,13 @@ export class NavigatorContainerComponent {
     .pipe(
       map(result => result.matches)
     );
-  showSecondaryTopNavigator: boolean;
+  @ViewChild(SecondaryTopNavigatorComponent)
+  secondaryTopNavigator: SecondaryTopNavigatorComponent;
 
   constructor(private breakpointObserver: BreakpointObserver) {
-    this.showSecondaryTopNavigator = false;
   }
 
-  toggleSecondaryTopNavigator() {
-    if (this.showSecondaryTopNavigator) {
-      this.showSecondaryTopNavigator = false;
-    } else {
-      this.showSecondaryTopNavigator = true;
-    }
+  onToggleSecondaryTopNavigatorEvent(): void {
+    this.secondaryTopNavigator.toggleDisplay();
   }
 }

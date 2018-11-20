@@ -4,17 +4,28 @@
   flex-shrink: 0;
   position: sticky;
   z-index: 998;
-  top: 0;
-  height: 72px;
+  height: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-items: start;
   background-color: $COLOR_LEVEL0;
-  border-bottom: 1px solid $COLOR_LEVEL1;
   padding-right: 0;
   padding-left: 0;
-  transition: 0.5s;
+
+  animation: toggle-hide 0.3s;
+  animation-fill-mode: forwards;
+
+  @keyframes toggle-hide {
+    0% {
+      border-bottom: 1px solid $COLOR_LEVEL1;
+      height: 72px;
+    }
+    100% {
+      height: 0;
+    }
+  }
 
   .search-btn {
     padding-left: 25px;
@@ -67,3 +78,21 @@
     }
   }
 }
+.secondary-top-navigator.display {
+  animation: toggle-display 0.3s;
+  animation-fill-mode: forwards;
+
+  @keyframes toggle-display {
+    0% {
+      height: 0;
+      border-bottom: 1px solid $COLOR_LEVEL1;
+    }
+    100% {
+      border-bottom: 1px solid $COLOR_LEVEL1;
+      height: 72px;
+    }
+  }
+}
+
+
+

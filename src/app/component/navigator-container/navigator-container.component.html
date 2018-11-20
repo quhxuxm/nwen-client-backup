@@ -11,8 +11,8 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <nwen-primary-top-navigator [sideNavigator]="sideNavigator"
-                                (toggleSecondaryTopNav)="toggleSecondaryTopNavigator()"></nwen-primary-top-navigator>
-    <nwen-secondary-top-navigator ngClass="{'show': showSecondaryTopNavigator}"></nwen-secondary-top-navigator>
+                                (toggleSecondaryTopNavigatorEvent)="onToggleSecondaryTopNavigatorEvent()"></nwen-primary-top-navigator>
+    <nwen-secondary-top-navigator></nwen-secondary-top-navigator>
     <section class="main-content">
       <nwen-home></nwen-home>
     </section>
