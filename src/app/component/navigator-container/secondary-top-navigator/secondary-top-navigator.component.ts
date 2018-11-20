@@ -7,9 +7,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SecondaryTopNavigatorComponent implements OnInit {
   display: boolean;
+  displaySearchBox: boolean;
 
   constructor() {
     this.display = false;
+    this.displaySearchBox = false;
   }
 
   ngOnInit() {
@@ -17,5 +19,9 @@ export class SecondaryTopNavigatorComponent implements OnInit {
 
   toggleDisplay(): void {
     this.display = !this.display;
+  }
+
+  toggleDisplaySearchBox(): void {
+    this.displaySearchBox = !this.displaySearchBox;
   }
 }

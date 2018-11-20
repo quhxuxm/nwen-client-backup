@@ -1,7 +1,14 @@
 <mat-toolbar class="secondary-top-navigator" [ngClass]="{'display': display}">
-      <span class="search-btn">
-        <mat-icon class="icon">search</mat-icon>
-      </span>
+  <span class="search-btn" (click)="toggleDisplaySearchBox()">
+    <mat-icon class="icon">search</mat-icon>
+  </span>
+  <div class="search-box-container"  [ngClass]="{'display': displaySearchBox}">
+    <input class="search-box" type="text"
+           placeholder="{{'secondary-top-navigator.search-box.placeholder' | translate}}"/>
+    <span class="close-search-box-btn" (click)="toggleDisplaySearchBox()">
+      <mat-icon class="icon">close</mat-icon>
+    </span>
+  </div>
   <div class="filter-container">
         <span class="filter-by-tags-label">
           {{'secondary-top-navigator.label.filter-by-tags'|translate}}
@@ -9,5 +16,7 @@
     <a class="tag">TAG1</a>
     <a class="tag">TAG2</a>
     <a class="tag">TAG3</a>
+    <a class="tag">TAG4</a>
+    <a class="tag">TAG5</a>
   </div>
 </mat-toolbar>

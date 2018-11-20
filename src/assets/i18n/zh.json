@@ -10,6 +10,7 @@
   "primary-top-navigator.label.join-us":"加入我们？",
   "primary-top-navigator.btn.login-or-register":"注册 / 登陆",
   "primary-top-navigator.btn.write-article":"写文章",
+  "secondary-top-navigator.search-box.placeholder":"搜索文章和文集的标题，内容，标签，以及作者昵称，标签，描述 ...",
   "secondary-top-navigator.label.filter-by-tags":"热门标签:",
   "register.username.placeholder": "电子邮箱",
   "register.username.hint": "请输入合法的邮箱地址",
