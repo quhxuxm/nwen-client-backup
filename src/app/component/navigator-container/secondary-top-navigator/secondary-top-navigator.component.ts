@@ -6,11 +6,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./secondary-top-navigator.component.scss']
 })
 export class SecondaryTopNavigatorComponent implements OnInit {
-  display: boolean;
+  display: boolean | null;
   displaySearchBox: boolean;
 
   constructor() {
-    this.display = false;
+    this.display = null;
     this.displaySearchBox = false;
   }
 

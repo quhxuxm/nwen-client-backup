@@ -10,7 +10,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {CardComponent} from './component/common/card/card.component';
 import {JumbotronComponent} from './component/common/jumbotron/jumbotron.component';
 import {LogoComponent} from './component/common/logo/logo.component';
-import {ReactiveContainerComponent} from './component/common/reactive-container/reactive-container.component';
+import {ReactiveCardContainerComponent} from './component/common/reactive-card-container/reactive-card-container.component';
 import {RichTextEditorComponent} from './component/common/rich-text-editor/rich-text-editor.component';
 import {RichTextViewerComponent} from './component/common/rich-text-viewer/rich-text-viewer.component';
 import {SeperatorComponent} from './component/common/seperator/seperator.component';
@@ -40,7 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     JumbotronComponent,
     RichTextEditorComponent,
     RichTextViewerComponent,
-    ReactiveContainerComponent,
+    ReactiveCardContainerComponent,
     SeperatorComponent,
     LoginComponent,
     LogoComponent,

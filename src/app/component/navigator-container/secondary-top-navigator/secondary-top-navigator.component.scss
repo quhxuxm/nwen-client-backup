@@ -1,9 +1,11 @@
 @import "~src/common";
+$SECONDARY_TOP_NAVIGATOR_HEIGHT: 72px;
+$SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION: 0.3s;
 .secondary-top-navigator {
   flex-grow: 0;
   flex-shrink: 0;
   position: sticky;
-  z-index: 998;
+  z-index: 997;
   height: 0;
   overflow: hidden;
   display: flex;
@@ -13,17 +15,6 @@
   background-color: $COLOR_LEVEL0;
   padding-right: 0;
   padding-left: 0;
-  animation: toggle-hide 0.3s;
-  animation-fill-mode: forwards;
-  @keyframes toggle-hide {
-    0% {
-      border-bottom: 1px solid $COLOR_LEVEL1;
-      height: 72px;
-    }
-    100% {
-      height: 0;
-    }
-  }
 
   .search-btn {
     padding-left: 25px;
@@ -60,7 +51,7 @@
       flex-grow: 1;
     }
 
-    .close-search-box-btn{
+    .close-search-box-btn {
       padding-left: 25px;
       padding-right: 25px;
       height: 100%;
@@ -93,7 +84,6 @@
       padding-right: 25px;
       font-size: $FONT_SIZE_LEVEL0;
       font-weight: bold;
-      border-left: 1px solid $COLOR_LEVEL1;
       border-right: 1px solid $COLOR_LEVEL1;
       height: 100%;
       display: flex;
@@ -120,8 +110,9 @@
   }
 }
 .secondary-top-navigator.display {
-  animation: toggle-display 0.3s;
+  animation: toggle-display;
   animation-fill-mode: forwards;
+  animation-duration: $SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION;
 
   @keyframes toggle-display {
     0% {
@@ -130,7 +121,23 @@
     }
     100% {
       border-bottom: 1px solid $COLOR_LEVEL1;
-      height: 72px;
+      height: $SECONDARY_TOP_NAVIGATOR_HEIGHT;
+    }
+  }
+}
+.secondary-top-navigator.hide {
+  animation: toggle-hide;
+  animation-fill-mode: forwards;
+  animation-duration: $SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION;
+
+  @keyframes toggle-hide {
+    0% {
+      border-bottom: 1px solid $COLOR_LEVEL1;
+      height: $SECONDARY_TOP_NAVIGATOR_HEIGHT;
+    }
+    100% {
+      height: 0;
+      border-bottom: none;
     }
   }
 }

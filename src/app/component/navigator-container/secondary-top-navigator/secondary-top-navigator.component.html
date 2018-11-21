@@ -1,8 +1,9 @@
-<mat-toolbar class="secondary-top-navigator" [ngClass]="{'display': display}">
+<mat-toolbar class="secondary-top-navigator"
+             [ngClass]="{'display': display!==null && display, 'hide': display!==null && !display}">
   <span class="search-btn" (click)="toggleDisplaySearchBox()">
     <mat-icon class="icon">search</mat-icon>
   </span>
-  <div class="search-box-container"  [ngClass]="{'display': displaySearchBox}">
+  <div class="search-box-container" [ngClass]="{'display': displaySearchBox}">
     <input class="search-box" type="text"
            placeholder="{{'secondary-top-navigator.search-box.placeholder' | translate}}"/>
     <span class="close-search-box-btn" (click)="toggleDisplaySearchBox()">

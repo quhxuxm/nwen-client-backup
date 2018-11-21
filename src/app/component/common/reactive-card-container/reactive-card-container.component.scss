@@ -1,0 +1,35 @@
+@import "~src/common";
+:host {
+  width: 100%;
+}
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-items: start;
+  justify-content: stretch;
+  align-items: start;
+  //max-width: 1280px;
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: start;
+    justify-self: stretch;
+  }
+
+  .column:first-of-type {
+    margin-left: 0;
+  }
+
+  .column:last-of-type {
+    margin-right: 0;
+  }
+}
+//@include responsive(568px) {
+//  .container {
+//    padding: 16px 64px;
+//  }
+//}

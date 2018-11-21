@@ -23,3 +23,18 @@ $COLOR_LEVEL5: #232931;
 
 $FONT_SIZE_LEVEL0: 13px;
 $FONT_SIZE_LEVEL1: 14px;
+
+@mixin responsive($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+@mixin circle_icon($width) {
+  border-radius: 50%;
+  overflow: hidden;
+  width: $width;
+  height: $width;
+  min-width: $width;
+  max-width: $width;
+}
+
