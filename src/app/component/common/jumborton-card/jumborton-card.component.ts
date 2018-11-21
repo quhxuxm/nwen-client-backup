@@ -2,14 +2,14 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Card} from '../../../vo/card';
 
 /**
- * Draw a card
+ * Give a card object, it will draw the card as a jumborton.
  */
 @Component({
-  selector: 'nwen-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  selector: 'nwen-jumborton-card',
+  templateUrl: './jumborton-card.component.html',
+  styleUrls: ['./jumborton-card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class JumbortonCardComponent implements OnInit {
   @Input()
   card: Card;
   @Input()

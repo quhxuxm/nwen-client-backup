@@ -2,9 +2,9 @@
 @import "~src/common";
 html, body {
   font-family: $FONT_FAMILY;
-  font-size: $FONT_SIZE_LEVEL1;
-  color: $COLOR_LEVEL5;
-  background-color: $COLOR_LEVEL0;
+  font-size: $FONT_SIZE1;
+  color: $COLOR5;
+  background-color: $COLOR0;
   height: 100%;
 }
 span.flex-spacer {

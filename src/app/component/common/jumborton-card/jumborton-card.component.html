@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="coverImg" *ngIf="showCoverImage && card.coverImageUrl"
+       [routerLink]="card.coverImageRouterLink"
+       [style.background-image]="'url('+card.coverImageUrl+')'">
+    <ng-content></ng-content>
+  </div>
+
+  <article *ngIf="showTitle || showSubTitle">
+    <header>
+      <a class="title" [routerLink]="card.titleRouterLink" *ngIf="showTitle">
+        {{card.title}}
+      </a>
+      <a class="sub-title" [routerLink]="card.subTitleRouterLink" *ngIf="showSubTitle">
+        {{card.subTitle}}
+      </a>
+    </header>
+    <section *ngIf="showContent">
+      {{card.content}}
+    </section>
+  </article>
+
+</div>
+

@@ -11,7 +11,7 @@
   justify-items: start;
   justify-content: stretch;
   align-items: start;
-  max-width: 1773px;
+  max-width: $MAX_WIDTH1;
   .column {
     display: flex;
     flex-direction: column;

@@ -9,14 +9,14 @@
 
   a {
     flex-shrink: 1;
-    font-size: $FONT_SIZE_LEVEL1;
-    border-bottom: 1px solid $COLOR_LEVEL1;
+    font-size: $FONT_SIZE1;
+    border-bottom: 1px solid $COLOR1;
     transition: 0.5s;
     height: 72px;
   }
 
   a:hover {
-    background-color: $COLOR_LEVEL2;
-    color: $COLOR_LEVEL0;
+    background-color: $COLOR2;
+    color: $COLOR0;
   }
 }

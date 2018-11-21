@@ -1,38 +1,17 @@
 @import "~src/common";
-:host {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
 .container {
+  width: 100%;
+  height: 400px;
   overflow: hidden;
-  margin: 32px;
+  max-width: $MAX_WIDTH1;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px;
+  background-color: inherit;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   justify-items: start;
-  height: 560px;
-  background-color: $COLOR0;
-  border-bottom: 1px solid $COLOR4;
-
-  div.coverImg {
-    width: 100%;
-    flex-grow: 1;
-    flex-shrink: 1;
-    background-position: 50% 50% !important;
-    background-size: 100% !important;
-    background-origin: border-box !important;
-    background-color: transparent;
-    cursor: pointer;
-    outline: none;
-    transition: 1s;
-  }
-
-  div.coverImg:hover {
-    background-size: 120% !important;
-  }
 
   article {
     width: 100%;
@@ -40,48 +19,43 @@
     flex-direction: column;
     align-items: start;
     justify-items: start;
-    flex-shrink: 1;
+    flex-grow: 1;
+    flex-shrink: 0;
     overflow: hidden;
-    margin-top: 40px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 40px;
-    text-align: center;
-    font-size: 1rem;
-
+    max-height: 80%;
+    margin-right: 32px;
     header {
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: start;
       justify-items: start;
       flex-grow: 0;
       flex-shrink: 0;
       a.title {
         font-size: 2.5rem;
         line-height: 50px;
-        max-height: 250px;
+        max-height: 201px;
         color: $COLOR7;
         text-decoration: none;
+        margin-bottom: 8px;
         font-feature-settings: 'clig' 0, 'calt' 0, 'case' 1;
         font-kerning: normal;
         font-variant-ligatures: common-ligatures;
         text-transform: uppercase;
         overflow: hidden;
         word-wrap: break-word;
-        font-weight: 300;
         transition: 0.5s;
+        font-weight: 300;
       }
       a.title:hover {
         color: $COLOR5;
       }
-
       a.sub-title {
         font-size: 1.5rem;
         color: $COLOR6;
         text-decoration: none;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin: 8px;
         font-weight: 300;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -94,18 +68,14 @@
       }
     }
     section {
-      font-size: 14px;
-      margin-left: 20px;
-      margin-right: 20px;
+      font-size: $FONT_SIZE1;
+      max-height: 175px;
+      margin: 8px;
       font-weight: 400;
-      overflow: hidden;
+      flex-grow: 1;
+      flex-shrink: 1;
+      cursor: pointer;
       outline: none;
-      text-align: center;
-      line-height: 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: calc(100% - 40px);
       color: $COLOR4;
       transition: 0.5s;
     }
@@ -113,15 +83,53 @@
       color: $COLOR5;
     }
   }
-}
-.container:hover {
-  article {
-    header {
-      a.title {
-        color: $COLOR5;
+
+  div.coverImg {
+    width: 100%;
+    height: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-position: 50% 50% !important;
+    background-size: 100% !important;
+    background-origin: border-box !important;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    transition: 1s;
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+  div.coverImg:hover {
+    background-size: 120% !important;
+
+  }
+  .container:hover {
+    article {
+      header {
+        a.title {
+          color: $COLOR5;
+        }
       }
     }
   }
-}
 
+}
+@include responsive($MAX_WIDTH5) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+    justify-items: start;
+    article {
+      width: 50%;
+
+      height: 100%;
+    }
+
+    div.coverImg {
+      width: 50%;
+      height: 80%;
+    }
+  }
+
+}
 

@@ -12,9 +12,11 @@ $SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION: 0.3s;
   flex-direction: row;
   align-items: center;
   justify-items: start;
-  background-color: $COLOR_LEVEL0;
+  background-color: $COLOR0;
   padding-right: 0;
   padding-left: 0;
+  top: 72px;
+  opacity: 0.9;
 
   .search-btn {
     padding-left: 25px;
@@ -23,13 +25,13 @@ $SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION: 0.3s;
     display: flex;
     align-items: center;
     cursor: pointer;
-    border-right: 1px solid $COLOR_LEVEL1;
+    border-right: 1px solid $COLOR1;
     transition: 0.5s;
   }
 
   .search-btn:hover {
-    background-color: $COLOR_LEVEL2;
-    color: $COLOR_LEVEL0;
+    background-color: $COLOR2;
+    color: $COLOR0;
   }
 
   .search-box-container {
@@ -58,13 +60,13 @@ $SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION: 0.3s;
       display: flex;
       align-items: center;
       cursor: pointer;
-      border-right: 1px solid $COLOR_LEVEL1;
+      border-right: 1px solid $COLOR1;
       transition: 0.5s;
     }
 
     .close-search-box-btn:hover {
-      background-color: $COLOR_LEVEL4;
-      color: $COLOR_LEVEL0;
+      background-color: $COLOR4;
+      color: $COLOR0;
     }
   }
 
@@ -82,9 +84,9 @@ $SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION: 0.3s;
     .filter-by-tags-label {
       padding-left: 25px;
       padding-right: 25px;
-      font-size: $FONT_SIZE_LEVEL0;
+      font-size: $FONT_SIZE0;
       font-weight: bold;
-      border-right: 1px solid $COLOR_LEVEL1;
+      border-right: 1px solid $COLOR1;
       height: 100%;
       display: flex;
       align-items: center;
@@ -93,8 +95,8 @@ $SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION: 0.3s;
     a.tag {
       padding-left: 25px;
       padding-right: 25px;
-      font-size: $FONT_SIZE_LEVEL0;
-      border-right: 1px solid $COLOR_LEVEL1;
+      font-size: $FONT_SIZE0;
+      border-right: 1px solid $COLOR1;
       height: 100%;
       display: flex;
       align-items: center;
@@ -104,8 +106,8 @@ $SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION: 0.3s;
     }
 
     a.tag:hover {
-      background-color: $COLOR_LEVEL2;
-      color: $COLOR_LEVEL0;
+      background-color: $COLOR2;
+      color: $COLOR0;
     }
   }
 }
@@ -117,10 +119,10 @@ $SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION: 0.3s;
   @keyframes toggle-display {
     0% {
       height: 0;
-      border-bottom: 1px solid $COLOR_LEVEL1;
+      border-bottom: 1px solid $COLOR1;
     }
     100% {
-      border-bottom: 1px solid $COLOR_LEVEL1;
+      border-bottom: 1px solid $COLOR1;
       height: $SECONDARY_TOP_NAVIGATOR_HEIGHT;
     }
   }
@@ -132,7 +134,7 @@ $SECONDARY_TOP_NAVIGATOR_ANIMATION_DURATION: 0.3s;
 
   @keyframes toggle-hide {
     0% {
-      border-bottom: 1px solid $COLOR_LEVEL1;
+      border-bottom: 1px solid $COLOR1;
       height: $SECONDARY_TOP_NAVIGATOR_HEIGHT;
     }
     100% {

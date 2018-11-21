@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {CardComponent} from './component/common/card/card.component';
+import {JumbortonCardComponent} from './component/common/jumborton-card/jumborton-card.component';
 import {JumbotronComponent} from './component/common/jumbotron/jumbotron.component';
 import {LogoComponent} from './component/common/logo/logo.component';
 import {ReactiveCardContainerComponent} from './component/common/reactive-card-container/reactive-card-container.component';
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SecondaryTopNavigatorComponent,
     SideNavigatorComponent,
     CardComponent,
+    JumbortonCardComponent,
     JumbotronComponent,
     RichTextEditorComponent,
     RichTextViewerComponent,

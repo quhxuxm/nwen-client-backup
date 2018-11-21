@@ -1,16 +1,16 @@
 @import "~src/common";
 .navigator-container {
   height: 100%;
-  background-color: $COLOR_LEVEL0;
+  background-color: $COLOR0;
 
   .side-navigator {
     width: 300px;
-    border-right: 1px solid $COLOR_LEVEL1;
-    background-color: $COLOR_LEVEL0;
+    border-right: 1px solid $COLOR1;
+    background-color: $COLOR0;
     .mat-toolbar {
-      background: $COLOR_LEVEL0;
+      background: $COLOR0;
       height: 72px;
-      border-bottom: 1px solid $COLOR_LEVEL1;
+      border-bottom: 1px solid $COLOR1;
       .logo-container {
         width: 90px;
         display: flex;

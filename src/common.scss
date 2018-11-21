@@ -1,33 +1,32 @@
 $FONT_FAMILY: "Microsoft YaHei", "微软雅黑", "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", Helvetica, Arial, Verdana, sans-serif;
-$COLOR_LEVEL0: #FFFFFF;
-
 /**
-Border color
+Color
  */
-$COLOR_LEVEL1: #EEEEEE;
-
+$COLOR0: #FFFFFF;
+$COLOR1: #EEEEEE;
+$COLOR2: #4ECCA3;
+$COLOR3: #4BBE95;
+$COLOR4: #393E46;
+$COLOR5: #232931;
+$COLOR6: #929292;
+$COLOR7: #828282;
 /**
-High light color
+Font size
  */
-$COLOR_LEVEL2: #4ECCA3;
+$FONT_SIZE0: 13px;
+$FONT_SIZE1: 14px;
 /**
-High light hover color
+Max width
  */
-$COLOR_LEVEL3: #4BBE95;
-/**
-Font high color
- */
-$COLOR_LEVEL4: #393E46;
-/**
-Font color
- */
-$COLOR_LEVEL5: #232931;
-
-$COLOR_LEVEL6: #929292;
-$COLOR_LEVEL7: #828282;
-
-$FONT_SIZE_LEVEL0: 13px;
-$FONT_SIZE_LEVEL1: 14px;
+$MAX_WIDTH1: 1773px;
+$MAX_WIDTH2: 1420px;
+$MAX_WIDTH3: 1280px;
+$MAX_WIDTH4: 1200px;
+$MAX_WIDTH5: 996px;
+$MAX_WIDTH6: 768px;
+$MAX_WIDTH7: 568px;
+$MAX_WIDTH8: 450px;
+$MAX_WIDTH9: 330px;
 
 @mixin responsive($width) {
   @media (min-width: $width) {

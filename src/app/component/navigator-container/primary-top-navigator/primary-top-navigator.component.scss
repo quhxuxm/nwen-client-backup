@@ -10,15 +10,16 @@
   flex-direction: row;
   align-items: center;
   justify-items: start;
-  background-color: $COLOR_LEVEL0;
-  border-bottom: 1px solid $COLOR_LEVEL1;
+  background-color: $COLOR0;
+  border-bottom: 1px solid $COLOR1;
   padding-right: 0;
   padding-left: 0;
+  opacity: 0.9;
 
   .btn-more {
     background-color: #FFFFFF;
     border: none;
-    font-size: $FONT_SIZE_LEVEL1;
+    font-size: $FONT_SIZE1;
     display: flex;
     align-items: center;
     justify-items: center;
@@ -27,7 +28,7 @@
     padding-left: 25px;
     padding-right: 25px;
     height: 100%;
-    border-right: 1px solid $COLOR_LEVEL1;
+    border-right: 1px solid $COLOR1;
     transition: 0.5s;
     .icon {
       transition: 0.5s;
@@ -35,15 +36,15 @@
     .label {
       transition: 0.5s;
       padding-left: 10px;
-      font-size: $FONT_SIZE_LEVEL1;
+      font-size: $FONT_SIZE1;
     }
   }
   .btn-more:hover {
     .icon {
-      color: $COLOR_LEVEL2;
+      color: $COLOR2;
     }
     .label {
-      color: $COLOR_LEVEL2;
+      color: $COLOR2;
     }
   }
 
@@ -63,14 +64,14 @@
     cursor: pointer;
   }
   .join-us-label {
-    font-size: $FONT_SIZE_LEVEL1;
+    font-size: $FONT_SIZE1;
     padding-left: 25px;
     height: 100%;
     display: flex;
     align-items: center;
   }
   .login-or-register-btn {
-    font-size: $FONT_SIZE_LEVEL1;
+    font-size: $FONT_SIZE1;
     height: 100%;
     display: flex;
     align-items: center;
@@ -78,19 +79,19 @@
     font-weight: bold;
   }
   .write-article-btn {
-    font-size: $FONT_SIZE_LEVEL1;
+    font-size: $FONT_SIZE1;
     height: 100%;
     display: flex;
     align-items: center;
     padding-left: 35px;
     padding-right: 35px;
-    border-left: 1px solid $COLOR_LEVEL1;
-    background-color: $COLOR_LEVEL2;
+    border-left: 1px solid $COLOR1;
+    background-color: $COLOR2;
     transition: 0.5s;
-    color: $COLOR_LEVEL0;
+    color: $COLOR0;
   }
   .write-article-btn:hover {
-    background-color: $COLOR_LEVEL3;
-    color: $COLOR_LEVEL0;
+    background-color: $COLOR3;
+    color: $COLOR0;
   }
 }
