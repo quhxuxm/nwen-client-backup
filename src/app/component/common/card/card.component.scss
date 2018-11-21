@@ -8,7 +8,7 @@
 }
 .container {
   overflow: hidden;
-  margin: 16px;
+  margin: 32px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -74,6 +74,7 @@
         overflow: hidden;
         word-wrap: break-word;
         font-weight: 300;
+        transition: 0.5s;
       }
       a.title:hover{
         color: $COLOR_LEVEL4;
@@ -90,6 +91,7 @@
         text-overflow: ellipsis;
         word-wrap: break-word;
         max-height: 205px;
+        transition: 0.5s;
       }
       a.sub-title:hover {
         color: $COLOR_LEVEL4;
