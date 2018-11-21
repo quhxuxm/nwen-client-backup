@@ -16,9 +16,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     for (let i = 0; i < 10; i++) {
       const card = new Card();
-      card.title = 'Card title ' + i;
-      card.subTitle = 'Card subtitle ' + i;
-      card.content = 'Card content ' + i;
+      card.title = '文章标题Card title ' + i;
+      card.subTitle = '文章作者Card subtitle ' + i;
+      card.content = '文章内容 文章内容 文章内容 文章内容 C ard content Card contentCard contentCard contentCard contentCard contentCard contentCard ' +
+        'Card contentCard contentCard contentCard contentCard contentCard contentCard contentCard contentCard ' +
+        'contentCard contentCard contentCard contentcontentCard content' + i;
+      card.coverImageUrl = '/assets/test.jpg';
       this.cards[i] = card;
     }
   }

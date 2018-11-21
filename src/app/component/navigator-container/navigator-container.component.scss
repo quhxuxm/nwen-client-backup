@@ -6,6 +6,7 @@
   .side-navigator {
     width: 300px;
     border-right: 1px solid $COLOR_LEVEL1;
+    background-color: $COLOR_LEVEL0;
     .mat-toolbar {
       background: $COLOR_LEVEL0;
       height: 72px;
@@ -26,10 +27,6 @@
 
 
   }
-
-
-
-
 
   section.main-content {
     display: flex;

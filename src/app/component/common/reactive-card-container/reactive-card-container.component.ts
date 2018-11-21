@@ -15,20 +15,20 @@ export class ReactiveCardContainerComponent implements OnInit {
     [[Breakpoints.XLarge], 4]
   ]);
   @Input()
-  maxColumnNumber: number | null;
+  maxColumnNumber: number;
   @Input()
   cards: Card[];
-  __columnNumber: number | null;
+  __columnNumber: number;
   __cardColumns: Card[][];
 
   constructor(private breakpointObserver: BreakpointObserver) {
     this.cards = [];
     this.__cardColumns = [];
-    this.maxColumnNumber = null;
+    this.maxColumnNumber = 3;
   }
 
   ngOnInit() {
-    if (!this.maxColumnNumber || this.maxColumnNumber > 4 || this.maxColumnNumber <= 0) {
+    if (this.maxColumnNumber > 4 || this.maxColumnNumber <= 0) {
       this.maxColumnNumber = 3;
     }
     this.__columnNumber = this.maxColumnNumber;
