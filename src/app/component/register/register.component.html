@@ -1,79 +1,76 @@
 <section>
-  <form #registerForm="ngForm" (ngSubmit)="register()" class="register-form">
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form">
     <mat-form-field>
-      <input matInput name="username" required maxlength="40" type="text"
+      <input matInput name="username" type="text"
              placeholder="{{'register.username.placeholder' | translate}}"
-             [(ngModel)]="username"
-             pattern="^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$"
-             #usernameInput="ngModel"/>
-      <mat-icon>user</mat-icon>
+             formControlName="username"
+      />
+      <mat-icon matSuffix>email</mat-icon>
       <mat-hint align="start">{{'register.username.hint' | translate}}</mat-hint>
-      <mat-error *ngIf="usernameInput.hasError('required')">
+      <mat-error *ngIf="registerForm.hasError('required')">
         {{'register.username.error.client.required' | translate}}
       </mat-error>
-      <mat-error *ngIf="usernameInput.hasError('maxlength')">
+      <mat-error *ngIf="registerForm.hasError('maxlength')">
         {{'register.username.error.client.maxlenght' | translate}}
       </mat-error>
-      <mat-error *ngIf="usernameInput.hasError('pattern')">
+      <mat-error *ngIf="registerForm.hasError('pattern')">
         {{'register.username.error.client.pattern' | translate}}
       </mat-error>
       <!--The server side validation error-->
-      <mat-error *ngIf="usernameInput.hasError('server')">
-        {{'register.username.error.server.'+ usernameInput.errors['server'] | translate}}
+      <mat-error *ngIf="registerForm.hasError('server')">
+        {{'register.username.error.server.' + username.errors['server'] | translate}}
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput name="password" required maxlength="16" minlength="6" type="password"
-             [(ngModel)]="password"
+      <input matInput name="password" type="password"
+             formControlName="password"
              placeholder="{{'register.password.placeholder' | translate}}"
-             pattern="^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*?\[\]\(\)\=\-\_\+\\\|\<\>\,\.\/]).*$"
-             #passwordInput="ngModel"/>
-      <mat-icon>lock</mat-icon>
+      />
+      <mat-icon matSuffix>lock</mat-icon>
       <mat-hint align="start">{{'register.password.hint' | translate}}</mat-hint>
-      <mat-error *ngIf="passwordInput.hasError('required')">
+      <mat-error *ngIf="registerForm.hasError('required')">
         {{'register.password.error.client.required' | translate}}
       </mat-error>
-      <mat-error *ngIf="passwordInput.hasError('maxlength')">
+      <mat-error *ngIf="registerForm.hasError('maxlength')">
         {{'register.password.error.client.maxlength' | translate}}
       </mat-error>
-      <mat-error *ngIf="passwordInput.hasError('minlength')">
+      <mat-error *ngIf="registerForm.hasError('minlength')">
         {{'register.password.error.client.minlength' | translate}}
       </mat-error>
-      <mat-error *ngIf="passwordInput.hasError('pattern')">
+      <mat-error *ngIf="registerForm.hasError('pattern')">
         {{'register.password.error.client.pattern' | translate}}
       </mat-error>
       <!--The server side validation error-->
-      <mat-error *ngIf="passwordInput.hasError('server')">
-        {{'register.password.error.server.'+ passwordInput.errors['server'] | translate}}
+      <mat-error *ngIf="registerForm.hasError('server')">
+        {{'register.password.error.server.' + password.errors['server'] | translate}}
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput name="nickname" required maxlength="12" minlength="3" type="text"
-             [(ngModel)]="nickname"
+      <input matInput name="nickname" type="text"
+             formControlName="nickname"
              placeholder="{{'register.nickname.placeholder' | translate}}"
-             pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$"
-             #nicknameInput="ngModel"/>
-      <mat-icon>face</mat-icon>
+      />
+      <mat-icon matSuffix>face</mat-icon>
       <mat-hint align="start">{{'register.nickname.hint' | translate}}</mat-hint>
-      <mat-error *ngIf="nicknameInput.hasError('required')">
+      <mat-error *ngIf="registerForm.hasError('required')">
         {{'register.nickname.error.client.required' | translate}}
       </mat-error>
-      <mat-error *ngIf="nicknameInput.hasError('maxlength')">
+      <mat-error *ngIf="registerForm.hasError('maxlength')">
         {{'register.nickname.error.client.maxlength' | translate}}
       </mat-error>
-      <mat-error *ngIf="nicknameInput.hasError('minlength')">
+      <mat-error *ngIf="registerForm.hasError('minlength')">
         {{'register.nickname.error.client.minlength' | translate}}
       </mat-error>
-      <mat-error *ngIf="nicknameInput.hasError('pattern')">
+      <mat-error *ngIf="registerForm.hasError('pattern')">
         {{'register.nickname.error.client.pattern' | translate}}
       </mat-error>
       <!--The server side validation error-->
-      <mat-error *ngIf="nicknameInput.hasError('server')">
-        {{'register.nickname.error.server.'+ nicknameInput.errors['server'] | translate}}
+      <mat-error *ngIf="registerForm.hasError('server')">
+        {{'register.nickname.error.server.' + nickname.errors['server'] | translate}}
       </mat-error>
     </mat-form-field>
     <div class="button-container">
-      <button mat-raised-button color="primary" class="button-theme" type="submit" [disabled]="!registerForm.valid">
+      <button mat-raised-button [disabled]="!registerForm.valid" color="primary" class="button-theme" type="submit" [disabled]="!registerForm.valid">
         {{'register.button' | translate}}
       </button>
     </div>
@@ -83,13 +80,13 @@
   </nwen-seperator>
   <div class=" social-application-container">
     <button mat-mini-fab>
-      <mat-icon>user</mat-icon>
+      <mat-icon>email</mat-icon>
     </button>
     <button mat-mini-fab>
-      <mat-icon>user</mat-icon>
+      <mat-icon>email</mat-icon>
     </button>
     <button mat-mini-fab class="others">
-      <mat-icon>user</mat-icon>
+      <mat-icon>email</mat-icon>
     </button>
   </div>
   <div class="login-link-container">

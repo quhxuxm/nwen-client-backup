@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ExecutorRequest} from '../../service/executor-request';
 import {ExecutorService, ExecutorServiceExceptionCallback, ExecutorServiceSuccessCallback} from '../../service/executor.service';
@@ -12,13 +12,24 @@ import {RegisterResponsePayload} from '../../service/payload/response/register-r
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  username: string;
-  password: string;
-  nickname: string;
-  @ViewChild('registerForm')
-  registerForm: FormGroup;
+  registerForm = this.formBuilder.group({
+    username: ['', Validators.required,
+      Validators.max(40),
+      Validators.min(3),
+      Validators.pattern(
+        '^([A-Za-z0-9_\\-\\.])+\\@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$')],
+    password: ['', Validators.required,
+      Validators.max(16),
+      Validators.min(6),
+      Validators.pattern('^.*(?=.{6,})(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*?\\[\\]\\(\\)\\=\\-\\_\\+\\\\\\|\\<\\>\\,\\.\\/]).*$')],
+    nickname: ['', Validators.required,
+      Validators.max(40),
+      Validators.min(2),
+      Validators.pattern('^[\u4E00-\u9FA5A-Za-z0-9_]+$')]
+  });
 
-  constructor(private executorService: ExecutorService, private router: Router) {
+
+  constructor(private formBuilder: FormBuilder, private executorService: ExecutorService, private router: Router) {
   }
 
   ngOnInit() {
@@ -27,9 +38,9 @@ export class RegisterComponent implements OnInit {
   public register() {
     const registerRequest: ExecutorRequest<RegisterRequestPayload> = new ExecutorRequest();
     const payload = new RegisterRequestPayload();
-    payload.username = this.username;
-    payload.password = this.password;
-    payload.nickname = this.nickname;
+    payload.username = this.registerForm.value['username'];
+    payload.password = this.registerForm.value['password'];
+    payload.nickname = this.registerForm.value['nickname'];
     registerRequest.payload = payload;
     const successCallback: ExecutorServiceSuccessCallback<RegisterResponsePayload> = response => {
       console.log(response.payload);

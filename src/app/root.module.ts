@@ -2,7 +2,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatFormFieldModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -58,6 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatToolbarModule,
     MatListModule,
     MatFormFieldModule,
+    MatInputModule,
     LayoutModule,
     HttpClientModule,
     ReactiveFormsModule,
