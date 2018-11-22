@@ -1,0 +1,40 @@
+@import "~src/common";
+:host{
+  width: 100%;
+  max-width: $MAX_WIDTH1;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+.separator {
+  width: calc(100% - 64px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: start;
+  margin: 32px;
+
+  span.inner-bar-left {
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 0.5px;
+
+  }
+  span.inner-bar-left.show-content {
+    margin-right: 16px;
+  }
+  span.inner-bar-right {
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 0.5px;
+  }
+  span.inner-bar-right.show-content {
+    margin-left: 16px;
+  }
+
+  span.border {
+    border-bottom: 1px solid $COLOR1;
+  }
+}
+

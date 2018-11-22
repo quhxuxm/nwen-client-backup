@@ -1,3 +1,7 @@
-<p>
-  seperator works!
-</p>
+<div class="separator">
+  <span class="inner-bar-left" [class.border]="showLeftBorder" [class.show-content]="showContent"></span>
+  <ng-container *ngIf="showContent">
+    <ng-content></ng-content>
+  </ng-container>
+  <span class="inner-bar-right" [class.border]="showRightBorder" [class.show-content]="showContent"></span>
+</div>
