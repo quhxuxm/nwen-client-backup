@@ -3,12 +3,11 @@
   width: 100%;
   height: 100%;
   max-width: 100%;
-  margin-top: 16px;
-  margin-bottom: 16px;
 }
 .container {
   overflow: hidden;
   margin: 32px;
+  margin-bottom: 64px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -35,7 +34,7 @@
   }
 
   article {
-    width: 100%;
+    width: calc(100% - 10px);
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -45,7 +44,6 @@
     margin-top: 40px;
     margin-left: 5px;
     margin-right: 5px;
-    margin-bottom: 40px;
     text-align: center;
     font-size: 1rem;
 
@@ -53,7 +51,7 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: start;
       justify-items: start;
       flex-grow: 0;
       flex-shrink: 0;
@@ -71,6 +69,7 @@
         word-wrap: break-word;
         font-weight: 300;
         transition: 0.5s;
+        text-align: start;
       }
       a.title:hover {
         color: $COLOR5;
@@ -88,6 +87,7 @@
         word-wrap: break-word;
         max-height: 205px;
         transition: 0.5s;
+        text-align: start;
       }
       a.sub-title:hover {
         color: $COLOR4;
@@ -95,22 +95,44 @@
     }
     section {
       font-size: 14px;
-      margin-left: 20px;
-      margin-right: 20px;
       font-weight: 400;
       overflow: hidden;
       outline: none;
-      text-align: center;
+      text-align: start;
       line-height: 22px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      width: calc(100% - 40px);
+      align-items: start;
+      width: 100%;
       color: $COLOR4;
       transition: 0.5s;
     }
     section:hover {
       color: $COLOR5;
+    }
+
+    footer {
+      overflow: hidden;
+      outline: none;
+      text-align: start;
+      line-height: 22px;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      width: 100%;
+      margin-top: 30px;
+      justify-items: end;
+
+      a {
+        font-size: 12px;
+        margin: 5px;
+        color: $COLOR6;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+      a:hover {
+        color: $COLOR5;
+      }
     }
   }
 }

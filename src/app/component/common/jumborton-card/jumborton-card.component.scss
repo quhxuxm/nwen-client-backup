@@ -1,17 +1,25 @@
 @import "~src/common";
-.container {
+:host{
   width: 100%;
-  height: 400px;
-  overflow: hidden;
   max-width: $MAX_WIDTH1;
   margin-left: auto;
   margin-right: auto;
-  padding: 8px;
-  background-color: inherit;
   display: flex;
   flex-direction: column;
+}
+.container {
+  height: 420px;
+  overflow: hidden;
+  background-color: inherit;
+  display: flex;
+  flex-direction: column-reverse;
   align-items: center;
   justify-items: start;
+  border-bottom: 1px solid $COLOR4;
+  margin-bottom: 64px;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-top: 32px;
 
   article {
     width: 100%;
@@ -20,10 +28,10 @@
     align-items: start;
     justify-items: start;
     flex-grow: 1;
-    flex-shrink: 0;
+    flex-shrink: 1;
     overflow: hidden;
-    max-height: 80%;
-    margin-right: 32px;
+    margin-top: 40px;
+
     header {
       width: 100%;
       display: flex;
@@ -38,7 +46,6 @@
         max-height: 201px;
         color: $COLOR7;
         text-decoration: none;
-        margin-bottom: 8px;
         font-feature-settings: 'clig' 0, 'calt' 0, 'case' 1;
         font-kerning: normal;
         font-variant-ligatures: common-ligatures;
@@ -55,7 +62,8 @@
         font-size: 1.5rem;
         color: $COLOR6;
         text-decoration: none;
-        margin: 8px;
+        margin-top: 30px;
+        margin-bottom: 30px;
         font-weight: 300;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -70,11 +78,9 @@
     section {
       font-size: $FONT_SIZE1;
       max-height: 175px;
-      margin: 8px;
       font-weight: 400;
       flex-grow: 1;
       flex-shrink: 1;
-      cursor: pointer;
       outline: none;
       color: $COLOR4;
       transition: 0.5s;
@@ -86,7 +92,6 @@
 
   div.coverImg {
     width: 100%;
-    height: 50%;
     flex-grow: 1;
     flex-shrink: 1;
     background-position: 50% 50% !important;
@@ -96,8 +101,6 @@
     cursor: pointer;
     outline: none;
     transition: 1s;
-    margin-left: 32px;
-    margin-right: 32px;
   }
   div.coverImg:hover {
     background-size: 120% !important;
@@ -119,15 +122,28 @@
     flex-direction: row;
     align-items: center;
     justify-items: start;
-    article {
-      width: 50%;
+    height: 600px;
 
-      height: 100%;
+    article {
+      width: calc(50% - 32px);
+      height: calc(100% - 80px);
+      margin-bottom: 40px;
+      margin-right: 32px;
+
+      header {
+        margin-top: 64px;
+        margin-bottom: 64px;
+      }
+      section{
+        font-size: 18px;
+      }
     }
 
     div.coverImg {
-      width: 50%;
-      height: 80%;
+      width: 44.2%;
+      height: calc(100% - 80px);
+      margin-top: 40px;
+      margin-bottom: 40px;
     }
   }
 

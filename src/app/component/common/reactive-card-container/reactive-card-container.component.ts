@@ -11,8 +11,8 @@ export class ReactiveCardContainerComponent implements OnInit {
   private BREAKPOINT_COLUMN_NUMBER: Map<string[], number> = new Map<string[], number>([
     [[Breakpoints.XSmall], 1],
     [[Breakpoints.Small], 2],
-    [[Breakpoints.Medium, Breakpoints.Large], 3],
-    [[Breakpoints.XLarge], 4]
+    [[Breakpoints.Medium ], 3],
+    [[Breakpoints.Large, Breakpoints.XLarge], 4]
   ]);
   @Input()
   maxColumnNumber: number;
@@ -24,12 +24,12 @@ export class ReactiveCardContainerComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver) {
     this.cards = [];
     this.__cardColumns = [];
-    this.maxColumnNumber = 3;
+    this.maxColumnNumber = 4;
   }
 
   ngOnInit() {
     if (this.maxColumnNumber > 4 || this.maxColumnNumber <= 0) {
-      this.maxColumnNumber = 3;
+      this.maxColumnNumber = 4;
     }
     this.__columnNumber = this.maxColumnNumber;
     if (this.cards.length < this.__columnNumber) {
