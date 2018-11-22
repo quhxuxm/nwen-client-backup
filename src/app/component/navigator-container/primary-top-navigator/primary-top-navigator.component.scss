@@ -38,13 +38,14 @@
 
     .label {
       display: none;
+      transition: 0.5s;
+      padding-left: 10px;
+      font-size: $FONT_SIZE1;
     }
 
     @include responsive($MAX_WIDTH7) {
       .label {
-        transition: 0.5s;
-        padding-left: 10px;
-        font-size: $FONT_SIZE1;
+        display: flex;
       }
     }
   }
