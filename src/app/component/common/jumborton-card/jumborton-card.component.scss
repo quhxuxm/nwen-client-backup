@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 .container {
-  height: 420px;
+  height: 560px;
   overflow: hidden;
   background-color: inherit;
   display: flex;
@@ -27,7 +27,6 @@
     flex-direction: column;
     align-items: start;
     justify-items: start;
-    flex-grow: 1;
     flex-shrink: 1;
     overflow: hidden;
     margin-top: 40px;
@@ -84,6 +83,7 @@
       outline: none;
       color: $COLOR4;
       transition: 0.5s;
+      margin-bottom: 70px;
     }
     section:hover {
       color: $COLOR5;

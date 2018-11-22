@@ -1,4 +1,5 @@
 @import "~src/common";
+
 .primary-top-navigator {
   flex-grow: 0;
   flex-shrink: 0;
@@ -30,19 +31,29 @@
     height: 100%;
     border-right: 1px solid $COLOR1;
     transition: 0.5s;
+
     .icon {
       transition: 0.5s;
     }
+
     .label {
-      transition: 0.5s;
-      padding-left: 10px;
-      font-size: $FONT_SIZE1;
+      display: none;
+    }
+
+    @include responsive($MAX_WIDTH7) {
+      .label {
+        transition: 0.5s;
+        padding-left: 10px;
+        font-size: $FONT_SIZE1;
+      }
     }
   }
+
   .btn-more:hover {
     .icon {
       color: $COLOR2;
     }
+
     .label {
       color: $COLOR2;
     }
@@ -51,45 +62,73 @@
   .show-secondary-top-navigator-btn {
     padding-left: 25px;
     height: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     cursor: pointer;
+  }
+
+  @include responsive($MAX_WIDTH6) {
+    .show-secondary-top-navigator-btn {
+      display: flex;
+    }
   }
 
   .logo-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 90px;
+    width: 70px;
     cursor: pointer;
   }
+
+  @include responsive($MAX_WIDTH6) {
+    .logo-container {
+      width: 90px;
+    }
+  }
+
   .join-us-label {
-    font-size: $FONT_SIZE1;
-    padding-left: 25px;
-    height: 100%;
-    display: flex;
-    align-items: center;
+    display: none;
   }
+
+  @include responsive($MAX_WIDTH6) {
+    .join-us-label {
+      font-size: $FONT_SIZE1;
+      padding-left: 25px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
   .login-or-register-btn {
-    font-size: $FONT_SIZE1;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding-right: 25px;
-    font-weight: bold;
+    display: none;
   }
+
+  @include responsive($MAX_WIDTH6) {
+    .login-or-register-btn {
+      font-size: $FONT_SIZE1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-right: 25px;
+      font-weight: bold;
+    }
+  }
+
   .write-article-btn {
     font-size: $FONT_SIZE1;
     height: 100%;
     display: flex;
     align-items: center;
-    padding-left: 35px;
-    padding-right: 35px;
+    padding-left: 30px;
+    padding-right: 30px;
     border-left: 1px solid $COLOR1;
     background-color: $COLOR2;
     transition: 0.5s;
     color: $COLOR0;
   }
+
   .write-article-btn:hover {
     background-color: $COLOR3;
     color: $COLOR0;
