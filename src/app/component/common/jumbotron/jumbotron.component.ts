@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'nwen-common-jumbotron',
+  selector: 'nwen-jumbotron',
   templateUrl: './jumbotron.component.html',
   styleUrls: ['./jumbotron.component.scss']
 })
 export class JumbotronComponent implements OnInit {
+  @Input()
+  backgroundImageUrl: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
-
 }
