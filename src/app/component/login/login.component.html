@@ -1,3 +1,39 @@
-<form>
+<section>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
 
-</form>
+    <label>
+      <span class="input-label-text">{{'login.username.hint' | translate}}</span>
+      <span class="input-wrapper error">
+        <input name="username" formControlName="username"
+               placeholder="{{'login.username.placeholder' | translate}}"/>
+        <mat-icon class="input-icon">email</mat-icon>
+      </span>
+    </label>
+    <label>
+      <span class="input-label-text">{{'login.password.hint' | translate}}</span>
+      <span class="input-wrapper">
+        <input name="password" formControlName="password"
+               placeholder="{{'login.password.placeholder' | translate}}"/>
+        <mat-icon class="input-icon">lock</mat-icon>
+      </span>
+    </label>
+    <button type="submit"
+            [disabled]="!loginForm.valid">
+      {{'login.button' | translate}}
+    </button>
+  </form>
+  <nwen-seperator [showContent]="true">
+    <span class="other-login-options-separator-label">
+      {{'login.separator.content' | translate}}
+    </span>
+  </nwen-seperator>
+  <div class="social-application-container">
+    <mat-icon routerLink="#" class="social-application">email</mat-icon>
+    <mat-icon routerLink="#" class="social-application">email</mat-icon>
+  </div>
+  <div class="register-link-container">
+    <a routerLink="/register">
+      {{'login.button.go-to-register' | translate}}
+    </a>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+@import "~src/common";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
+  margin-top: 64px;
+}
+
+section {
+  width: calc(100% - 64px);
+  max-width: $MAX_WIDTH7;
+  margin: auto 32px;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  display: flex;
+
+  @include common_form() {
+  }
+
+  .other-login-options-separator-label {
+    font-size: $FONT_SIZE1;
+    color: $COLOR4;
+  }
+
+  .social-application-container {
+    margin: 8px;
+    margin-top: 0;
+
+    .social-application {
+      margin: 8px;
+      margin-top: 0;
+      cursor: pointer;
+    }
+  }
+
+  .register-link-container {
+    margin: 32px;
+
+    a {
+      font-size: $FONT_SIZE2;
+      text-decoration: underline;
+      transition: 0.5s;
+    }
+
+    a:hover {
+      color: $COLOR3;
+    }
+  }
+}

@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit {
       Validators.pattern('^[\u4E00-\u9FA5A-Za-z0-9_]+$')]
   });
 
-
   constructor(private formBuilder: FormBuilder, private executorService: ExecutorService, private router: Router) {
   }
 

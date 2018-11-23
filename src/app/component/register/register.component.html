@@ -1,93 +1,42 @@
 <section>
   <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form">
-    <mat-form-field>
-      <input matInput name="username" type="text"
-             placeholder="{{'register.username.placeholder' | translate}}"
-             formControlName="username"
-      />
-      <mat-icon matSuffix>email</mat-icon>
-      <mat-hint align="start">{{'register.username.hint' | translate}}</mat-hint>
-      <mat-error *ngIf="registerForm.hasError('required')">
-        {{'register.username.error.client.required' | translate}}
-      </mat-error>
-      <mat-error *ngIf="registerForm.hasError('maxlength')">
-        {{'register.username.error.client.maxlenght' | translate}}
-      </mat-error>
-      <mat-error *ngIf="registerForm.hasError('pattern')">
-        {{'register.username.error.client.pattern' | translate}}
-      </mat-error>
-      <!--The server side validation error-->
-      <mat-error *ngIf="registerForm.hasError('server')">
-        {{'register.username.error.server.' + username.errors['server'] | translate}}
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput name="password" type="password"
-             formControlName="password"
-             placeholder="{{'register.password.placeholder' | translate}}"
-      />
-      <mat-icon matSuffix>lock</mat-icon>
-      <mat-hint align="start">{{'register.password.hint' | translate}}</mat-hint>
-      <mat-error *ngIf="registerForm.hasError('required')">
-        {{'register.password.error.client.required' | translate}}
-      </mat-error>
-      <mat-error *ngIf="registerForm.hasError('maxlength')">
-        {{'register.password.error.client.maxlength' | translate}}
-      </mat-error>
-      <mat-error *ngIf="registerForm.hasError('minlength')">
-        {{'register.password.error.client.minlength' | translate}}
-      </mat-error>
-      <mat-error *ngIf="registerForm.hasError('pattern')">
-        {{'register.password.error.client.pattern' | translate}}
-      </mat-error>
-      <!--The server side validation error-->
-      <mat-error *ngIf="registerForm.hasError('server')">
-        {{'register.password.error.server.' + password.errors['server'] | translate}}
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput name="nickname" type="text"
-             formControlName="nickname"
-             placeholder="{{'register.nickname.placeholder' | translate}}"
-      />
-      <mat-icon matSuffix>face</mat-icon>
-      <mat-hint align="start">{{'register.nickname.hint' | translate}}</mat-hint>
-      <mat-error *ngIf="registerForm.hasError('required')">
-        {{'register.nickname.error.client.required' | translate}}
-      </mat-error>
-      <mat-error *ngIf="registerForm.hasError('maxlength')">
-        {{'register.nickname.error.client.maxlength' | translate}}
-      </mat-error>
-      <mat-error *ngIf="registerForm.hasError('minlength')">
-        {{'register.nickname.error.client.minlength' | translate}}
-      </mat-error>
-      <mat-error *ngIf="registerForm.hasError('pattern')">
-        {{'register.nickname.error.client.pattern' | translate}}
-      </mat-error>
-      <!--The server side validation error-->
-      <mat-error *ngIf="registerForm.hasError('server')">
-        {{'register.nickname.error.server.' + nickname.errors['server'] | translate}}
-      </mat-error>
-    </mat-form-field>
-    <div class="button-container">
-      <button mat-raised-button [disabled]="!registerForm.valid" color="primary" class="button-theme" type="submit" [disabled]="!registerForm.valid">
-        {{'register.button' | translate}}
-      </button>
-    </div>
+    <label>
+      <span class="input-label-text">{{'register.nickname.hint' | translate}}</span>
+      <span class="input-wrapper valid">
+        <input name="nickname" formControlName="nickname"
+               placeholder="{{'register.nickname.placeholder' | translate}}"/>
+        <mat-icon class="input-icon">face</mat-icon>
+      </span>
+    </label>
+    <label>
+      <span class="input-label-text">{{'register.username.hint' | translate}}</span>
+      <span class="input-wrapper error">
+        <input name="username" formControlName="username"
+               placeholder="{{'register.username.placeholder' | translate}}"/>
+        <mat-icon class="input-icon">email</mat-icon>
+      </span>
+    </label>
+    <label>
+      <span class="input-label-text">{{'register.password.hint' | translate}}</span>
+      <span class="input-wrapper">
+        <input name="password" formControlName="password"
+               placeholder="{{'register.password.placeholder' | translate}}"/>
+        <mat-icon class="input-icon">lock</mat-icon>
+      </span>
+    </label>
+    <button type="submit"
+            [disabled]="!registerForm.valid">
+      {{'register.button' | translate}}
+    </button>
   </form>
   <nwen-seperator [showContent]="true">
-    {{'register.separator.content' | translate}}
+    <span class="other-register-options-separator-label">
+      {{'register.separator.content' | translate}}
+    </span>
   </nwen-seperator>
-  <div class=" social-application-container">
-    <button mat-mini-fab>
-      <mat-icon>email</mat-icon>
-    </button>
-    <button mat-mini-fab>
-      <mat-icon>email</mat-icon>
-    </button>
-    <button mat-mini-fab class="others">
-      <mat-icon>email</mat-icon>
-    </button>
+  <div class="social-application-container">
+    <mat-icon routerLink="#" class="social-application">email</mat-icon>
+    <mat-icon routerLink="#" class="social-application">email</mat-icon>
   </div>
   <div class="login-link-container">
     <a routerLink="/login">

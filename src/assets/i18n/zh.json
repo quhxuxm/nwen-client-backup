@@ -39,7 +39,7 @@
   "register.nickname.error.server.REGISTER_NICKNAME_EXIST_ERROR": "昵称已经存在",
   "register.button": "注册",
   "register.separator.content": "社交账号注册",
-  "register.button.go-to-login": "登陆",
+  "register.button.go-to-login": "去登陆",
   "login.username.placeholder": "电子邮箱",
   "login.username.hint": "请输入合法的邮箱地址",
   "login.username.error.client.required": "请输入邮箱地址",

@@ -1,4 +1,5 @@
 @import "~src/common";
+
 :host {
   display: flex;
   flex-direction: column;
@@ -7,7 +8,9 @@
   flex-grow: 1;
   flex-shrink: 1;
   width: 100%;
+  margin-top: 64px;
 }
+
 section {
   width: calc(100% - 64px);
   max-width: $MAX_WIDTH7;
@@ -17,77 +20,30 @@ section {
   justify-items: center;
   display: flex;
 
-  @include responsive($MAX_WIDTH5) {
-    width: 500px;
+  @include common_form() {
   }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-items: start;
-    width: 100%;
-
-    > * {
-      width: 100%;
-      margin-top: 16px;
-      margin-bottom: 16px;
-    }
-    > * + * {
-      margin-top: 0;
-    }
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 500px;
-
-    @include responsive($MAX_WIDTH5) {
-      width: 500px;
-    }
-
+  .other-register-options-separator-label{
+    font-size: $FONT_SIZE1;
     color: $COLOR4;
-
-    .button-container {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-items: start;
-      justify-content: space-between;
-
-      button {
-        margin-left: auto;
-      }
+  }
+  .social-application-container{
+    margin: 8px;
+    margin-top: 0;
+    .social-application{
+      margin: 8px;
+      margin-top: 0;
+      cursor: pointer;
     }
   }
-
-  .social-application-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-items: center;
-    justify-content: space-around;
-    width: 100%;
-    margin-top: 50px;
-    button {
-      color: $COLOR4;
-      margin-left: auto;
-      margin-right: auto;
+  .login-link-container{
+    margin: 32px;
+    a{
+      font-size: $FONT_SIZE2;
+      text-decoration: underline;
+      transition: 0.5s;
     }
-    button.others {
-      color: $COLOR4 !important;
-    }
-  }
-
-  .login-link-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-    margin-top: 32px !important;
-    margin-bottom: 16px !important;
-
-    a {
-      color: $COLOR4;
-      font-size: 18px;
+    a:hover{
+      color: $COLOR3;
     }
   }
 }

@@ -10,11 +10,13 @@ $COLOR4: #393E46;
 $COLOR5: #232931;
 $COLOR6: #929292;
 $COLOR7: #828282;
+$COLOR8: #ee2f15;
 /**
 Font size
  */
 $FONT_SIZE0: 13px;
 $FONT_SIZE1: 14px;
+$FONT_SIZE2: 16px;
 /**
 Max width
  */
@@ -33,8 +35,78 @@ $MAX_WIDTH9: 330px;
     @content;
   }
 }
+
 .circle_image {
   border-radius: 50%;
   overflow: hidden;
 }
 
+@mixin common_form() {
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: start;
+    width: 100%;
+    color: $COLOR4;
+
+    label {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin: 5px;
+      .input-label-text {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        font-size: $FONT_SIZE0;
+      }
+      .input-wrapper {
+        border: 1px solid $COLOR1;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: start;
+        input {
+          font-size: $FONT_SIZE1;
+          padding: 10px;
+          border: none;
+          outline: none;
+          flex-grow: 1;
+        }
+        .input-icon {
+          margin-right: 10px;
+        }
+      }
+
+      .input-wrapper.valid {
+        border-left: 3px solid $COLOR2;
+      }
+
+      .input-wrapper.error {
+        border-left: 3px solid $COLOR8;
+      }
+    }
+
+    button {
+      margin-right: 0;
+      margin-left: auto;
+      margin-top: 16px;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      background-color: $COLOR2;
+      transition: 0.5s;
+      border: 1px solid $COLOR1;
+      color: $COLOR0;
+      cursor: pointer;
+      font-size: $FONT_SIZE1;
+    }
+    button:hover{
+      background-color: $COLOR3;
+    }
+
+    @content;
+  }
+}
