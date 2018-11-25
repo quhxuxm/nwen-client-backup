@@ -2,7 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ExecutorRequest} from '../../service/executor-request';
-import {ExecutorService, ExecutorServiceExceptionCallback, ExecutorServiceSuccessCallback} from '../../service/executor.service';
+import {
+  ExecutorService, ExecutorServiceBusinessExceptionCallback, ExecutorServiceClientExceptionCallback, ExecutorServiceServerExceptionCallback,
+  ExecutorServiceSuccessCallback
+} from '../../service/executor.service';
 import {AuthenticateRequestPayload} from '../../service/payload/request/authenticate-request-payload';
 import {AuthenticateResponsePayload} from '../../service/payload/response/authenticate-response-payload';
 
@@ -40,7 +43,11 @@ export class LoginComponent implements OnInit {
       console.log(response.payload);
       this.router.navigateByUrl('/login');
     };
-    const errorCallback: ExecutorServiceExceptionCallback = response => {
+    const clientExceptionCallback: ExecutorServiceClientExceptionCallback = error => {
+    };
+    const serverExceptionCallback: ExecutorServiceServerExceptionCallback = response => {
+    };
+    const businessExceptionCallback: ExecutorServiceBusinessExceptionCallback = response => {
       // Token server errors
       if ('REGISTER_TOKEN_IS_EMPTY_ERROR' === response.payload.code) {
         this.loginForm.controls['username'].setErrors({
@@ -74,6 +81,7 @@ export class LoginComponent implements OnInit {
         return;
       }
     };
-    this.executorService.exec('/api/authenticate', loginRequest, successCallback, errorCallback);
+    this.executorService.exec('/api/authenticate', loginRequest, successCallback,
+      clientExceptionCallback, serverExceptionCallback, businessExceptionCallback);
   }
 }

@@ -1,8 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {GlobalConstant} from '../../constant';
 import {ExecutorRequest} from '../../service/executor-request';
-import {ExecutorService, ExecutorServiceExceptionCallback, ExecutorServiceSuccessCallback} from '../../service/executor.service';
+import {
+  ExecutorService, ExecutorServiceBusinessExceptionCallback, ExecutorServiceClientExceptionCallback, ExecutorServiceServerExceptionCallback,
+  ExecutorServiceSuccessCallback
+} from '../../service/executor.service';
 import {RegisterRequestPayload} from '../../service/payload/request/register-request-payload';
 import {RegisterResponsePayload} from '../../service/payload/response/register-response-payload';
 
@@ -12,29 +16,40 @@ import {RegisterResponsePayload} from '../../service/payload/response/register-r
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  registerForm = this.formBuilder.group({
-    username: ['', Validators.required,
-      Validators.max(40),
-      Validators.min(3),
-      Validators.pattern(
-        '^([A-Za-z0-9_\\-\\.])+\\@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$')],
-    password: ['', Validators.required,
-      Validators.max(16),
-      Validators.min(6),
-      Validators.pattern('^.*(?=.{6,})(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*?\\[\\]\\(\\)\\=\\-\\_\\+\\\\\\|\\<\\>\\,\\.\\/]).*$')],
-    nickname: ['', Validators.required,
-      Validators.max(40),
-      Validators.min(2),
-      Validators.pattern('^[\u4E00-\u9FA5A-Za-z0-9_]+$')]
-  });
+  readonly SERVER_ERROR_KEY = 'server-error';
+  readonly CLIENT_ERROR_KEY = 'client-error';
+  registerForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private executorService: ExecutorService, private router: Router) {
   }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      username: ['', [Validators.required,
+        Validators.maxLength(GlobalConstant.Common.USERNAME_MAX_LENGTH),
+        Validators.minLength(GlobalConstant.Common.USERNAME_MIN_LENGTH),
+        Validators.email]],
+      password: ['', [Validators.required,
+        Validators.maxLength(GlobalConstant.Common.PASSWORD_MAX_LENGTH),
+        Validators.minLength(GlobalConstant.Common.PASSWORD_MIN_LENGTH),
+        Validators.pattern(GlobalConstant.Common.PASSWORD_PATTERN)]],
+      nickname: ['', [Validators.required,
+        Validators.maxLength(GlobalConstant.Common.NICKNAME_MAX_LENGTH),
+        Validators.minLength(GlobalConstant.Common.NICKNAME_MIN_LENGTH),
+        Validators.pattern(GlobalConstant.Common.NICKNAME_PATTERN)]]
+    });
   }
 
-  public register() {
+  public isControlValid(controlName: string): boolean {
+    const control = this.registerForm.get(controlName);
+    if (control == null) {
+      return false;
+    }
+    const changed = (control.dirty || control.touched);
+    return !(control.invalid && changed);
+  }
+
+  public register(): void {
     const registerRequest: ExecutorRequest<RegisterRequestPayload> = new ExecutorRequest();
     const payload = new RegisterRequestPayload();
     payload.username = this.registerForm.value['username'];
@@ -45,71 +60,73 @@ export class RegisterComponent implements OnInit {
       console.log(response.payload);
       this.router.navigateByUrl('/login');
     };
-    const errorCallback: ExecutorServiceExceptionCallback = response => {
+    const clientErrorCallback: ExecutorServiceClientExceptionCallback = error => {
+      this.registerForm.setErrors({
+        CLIENT_ERROR_KEY: 'client-connection'
+      });
+      return;
+    };
+    const serverErrorCallback: ExecutorServiceServerExceptionCallback = error => {
+      this.registerForm.setErrors({
+        SERVER_ERROR_KEY: 'unknown'
+      });
+      return;
+    };
+    const businessErrorCallback: ExecutorServiceBusinessExceptionCallback = response => {
       // Token server errors
-      if ('REGISTER_TOKEN_IS_EMPTY_ERROR' === response.payload.code) {
+      if ('USERNAME_EXIST' === response.payload.code) {
         this.registerForm.controls['username'].setErrors({
-          'server': response.payload.code
+          SERVER_ERROR_KEY: response.payload.code
         });
         return;
       }
-      if ('REGISTER_TOKEN_FORMAT_INCORRECT' === response.payload.code) {
+      if ('USERNAME_IS_EMPTY' === response.payload.code) {
         this.registerForm.controls['username'].setErrors({
-          'server': response.payload.code
+          SERVER_ERROR_KEY: response.payload.code
         });
         return;
       }
-      if ('REGISTER_TOKEN_EXIST_ERROR' === response.payload.code) {
+      if ('USERNAME_FORMAT_INCORRECT' === response.payload.code) {
         this.registerForm.controls['username'].setErrors({
-          'server': response.payload.code
+          SERVER_ERROR_KEY: response.payload.code
         });
         return;
       }
       // Password server errors
-      if ('REGISTER_PASSWORD_IS_EMPTY_ERROR' === response.payload.code) {
+      if ('PASSWORD_IS_EMPTY' === response.payload.code) {
         this.registerForm.controls['password'].setErrors({
-          'server': response.payload.code
+          SERVER_ERROR_KEY: response.payload.code
         });
         return;
       }
-      if ('REGISTER_PASSWORD_FORMAT_INCORRECT' === response.payload.code) {
+      if ('PASSWORD_FORMAT_INCORRECT' === response.payload.code) {
         this.registerForm.controls['password'].setErrors({
-          'server': response.payload.code
+          SERVER_ERROR_KEY: response.payload.code
         });
         return;
       }
       // Nick name server errors
-      if ('REGISTER_NICKNAME_IS_EMPTY_ERROR' === response.payload.code) {
+      if ('NICKNAME_IS_EMPTY' === response.payload.code) {
         this.registerForm.controls['nickname'].setErrors({
-          'server': response.payload.code
+          SERVER_ERROR_KEY: response.payload.code
         });
         return;
       }
-      if ('REGISTER_NICKNAME_FORMAT_INCORRECT' === response.payload.code) {
+      if ('NICKNAME_FORMAT_INCORRECT' === response.payload.code) {
         this.registerForm.controls['nickname'].setErrors({
-          'server': response.payload.code
+          SERVER_ERROR_KEY: response.payload.code
         });
         return;
       }
-      if ('REGISTER_NICKNAME_EXIST_ERROR' === response.payload.code) {
+      if ('NICKNAME_EXIST' === response.payload.code) {
         this.registerForm.controls['nickname'].setErrors({
-          'server': response.payload.code
-        });
-        return;
-      }
-      if ('REGISTER_NICKNAME_MAX_LENGTH_INCORRECT' === response.payload.code) {
-        this.registerForm.controls['nickname'].setErrors({
-          'server': response.payload.code
-        });
-        return;
-      }
-      if ('REGISTER_NICKNAME_MIN_LENGTH_INCORRECT' === response.payload.code) {
-        this.registerForm.controls['nickname'].setErrors({
-          'server': response.payload.code
+          SERVER_ERROR_KEY: response.payload.code
         });
         return;
       }
     };
-    this.executorService.exec('/api/register', registerRequest, successCallback, errorCallback);
+    this.executorService.exec(
+      '/api/register', registerRequest, successCallback, clientErrorCallback, serverErrorCallback, businessErrorCallback
+    );
   }
 }

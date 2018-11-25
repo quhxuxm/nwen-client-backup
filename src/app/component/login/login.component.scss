@@ -13,7 +13,7 @@
 
 section {
   width: calc(100% - 64px);
-  max-width: $MAX_WIDTH7;
+  max-width: $MAX_WIDTH8;
   margin: auto 32px;
   flex-direction: column;
   align-items: center;
@@ -44,12 +44,15 @@ section {
 
     a {
       font-size: $FONT_SIZE2;
-      text-decoration: underline;
+      text-decoration: none;
       transition: 0.5s;
+      color: $COLOR4;
+      border-bottom: 1px solid $COLOR4;
     }
 
     a:hover {
       color: $COLOR3;
+      border-bottom: 1px solid $COLOR3;
     }
   }
 }

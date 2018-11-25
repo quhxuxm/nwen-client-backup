@@ -13,7 +13,7 @@
 
 section {
   width: calc(100% - 64px);
-  max-width: $MAX_WIDTH7;
+  max-width: $MAX_WIDTH8;
   margin: auto 32px;
   flex-direction: column;
   align-items: center;
@@ -22,28 +22,37 @@ section {
 
   @include common_form() {
   }
-  .other-register-options-separator-label{
+
+  .other-register-options-separator-label {
     font-size: $FONT_SIZE1;
     color: $COLOR4;
   }
-  .social-application-container{
+
+  .social-application-container {
     margin: 8px;
     margin-top: 0;
-    .social-application{
+
+    .social-application {
       margin: 8px;
       margin-top: 0;
       cursor: pointer;
     }
   }
-  .login-link-container{
+
+  .login-link-container {
     margin: 32px;
-    a{
+
+    a {
       font-size: $FONT_SIZE2;
-      text-decoration: underline;
+      text-decoration: none;
       transition: 0.5s;
+      color: $COLOR4;
+      border-bottom: 1px solid $COLOR4;
     }
-    a:hover{
+
+    a:hover {
       color: $COLOR3;
+      border-bottom: 1px solid $COLOR3;
     }
   }
 }

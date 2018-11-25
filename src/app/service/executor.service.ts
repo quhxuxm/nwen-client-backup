@@ -7,7 +7,9 @@ import {ExecutorResponse} from './executor-response';
 import {ExceptionResponsePayload} from './payload/response/exception-response-payload';
 import {SecurityService} from './security.service';
 
-export type ExecutorServiceExceptionCallback = (executorResponse: ExecutorResponse<ExceptionResponsePayload>) => void;
+export type ExecutorServiceServerExceptionCallback = (payload: any) => void;
+export type ExecutorServiceClientExceptionCallback = (error: ErrorEvent) => void;
+export type ExecutorServiceBusinessExceptionCallback = (executorResponse: ExecutorResponse<ExceptionResponsePayload>) => void;
 export type ExecutorServiceSuccessCallback<ResponsePayloadType> = (executorResponse: ExecutorResponse<ResponsePayloadType>) => void;
 
 @Injectable({
@@ -19,7 +21,9 @@ export class ExecutorService {
 
   exec<RequestPayloadType, ResponsePayloadType>(entryUrl: string, executorRequest: ExecutorRequest<RequestPayloadType>,
                                                 successCallback: ExecutorServiceSuccessCallback<ResponsePayloadType>,
-                                                exceptionCallback: ExecutorServiceExceptionCallback): void {
+                                                clientExceptionCallback: ExecutorServiceClientExceptionCallback,
+                                                serverExceptionCallback: ExecutorServiceServerExceptionCallback,
+                                                businessExceptionCallback: ExecutorServiceBusinessExceptionCallback): void {
     const secureTokenInRequest: string | undefined = executorRequest.header[GlobalConstant.ExecutorRequestHeaderName.SECURE_TOKEN];
     if (!secureTokenInRequest) {
       const storedSecureToken: string | null = this.securityService.secureToken;
@@ -27,32 +31,33 @@ export class ExecutorService {
         executorRequest.header[GlobalConstant.ExecutorRequestHeaderName.SECURE_TOKEN] = storedSecureToken;
       }
     }
-    const responseObservable = this.httpClient.post<ExecutorResponse<ResponsePayloadType>>(entryUrl,
+    const responseObservable = this.httpClient.post<ExecutorResponse<ResponsePayloadType | ExceptionResponsePayload>>(entryUrl,
       executorRequest,
       {observe: 'response'});
     responseObservable.subscribe(response => {
-      const executorResponse: ExecutorResponse<ResponsePayloadType> | null = response.body;
+      const executorResponse = response.body;
       if (executorResponse == null) {
         console.error('Can not get the executor response from the http response because of the executor response is null.');
+        return;
+      }
+      if (!executorResponse.success) {
+        console.error('There is a business error happen.');
+        businessExceptionCallback(<ExecutorResponse<ExceptionResponsePayload>>executorResponse);
         return;
       }
       const secureToken: string | undefined = executorResponse.header[GlobalConstant.ExecutorResponseHeaderName.SECURE_TOKEN];
       if (secureToken) {
         this.securityService.secureToken = secureToken;
       }
-      successCallback(executorResponse);
+      successCallback(<ExecutorResponse<ResponsePayloadType>>executorResponse);
     }, (error: HttpErrorResponse) => {
       if (error.error instanceof ErrorEvent) {
         console.error('There is a client error happen.');
+        clientExceptionCallback(error.error);
         return;
       }
       console.error('There is a server error happen.');
-      const executorExceptionResponse: ExecutorResponse<ExceptionResponsePayload> | null = error.error;
-      if (executorExceptionResponse == null) {
-        console.error('Can not get the executor response from the http response because of the executor response is null.');
-        return;
-      }
-      exceptionCallback(executorExceptionResponse);
+      serverExceptionCallback(error.error);
     });
   }
 }

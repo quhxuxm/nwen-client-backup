@@ -1,4 +1,5 @@
 export class ExecutorResponse<PayloadType> {
+  success: boolean;
   payload: PayloadType;
   readonly header: {
     [key: string]: string;
@@ -6,5 +7,6 @@ export class ExecutorResponse<PayloadType> {
 
   constructor() {
     this.header = {};
+    this.success = true;
   }
 }

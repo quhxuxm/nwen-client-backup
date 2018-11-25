@@ -1,43 +1,97 @@
 <section>
   <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form">
+    <!-- Server errors start -->
+    <span *ngIf="registerForm.hasError(CLIENT_ERROR_KEY)" class="global-error">
+      <mat-icon class="alert-icon">error_outline</mat-icon>
+      {{'register.error.client' | translate}}
+    </span>
+    <span *ngIf="registerForm.hasError(SERVER_ERROR_KEY)" class="global-error">
+      <mat-icon class="alert-icon">error_outline</mat-icon>
+      {{'register.error.server' | translate}}
+    </span>
+    <!-- Server errors end -->
+    <!-- Form content start -->
     <label>
-      <span class="input-label-text">{{'register.nickname.hint' | translate}}</span>
-      <span class="input-wrapper valid">
-        <input name="nickname" formControlName="nickname"
+      <span *ngIf="registerForm.get('nickname').valid || !registerForm.get('nickname').value"
+            class="input-label-text">{{'register.nickname.hint' | translate}}</span>
+      <span *ngIf="registerForm.hasError('maxlength', 'nickname')" class="field-error">
+        {{'register.nickname.error.client.maxlength' | translate}}
+      </span>
+      <span *ngIf="registerForm.hasError('minlength', 'nickname')" class="field-error">
+        {{'register.nickname.error.client.minlength' | translate}}
+      </span>
+      <span *ngIf="registerForm.hasError('pattern', 'nickname')" class="field-error">
+        {{'register.nickname.error.client.pattern' | translate}}
+      </span>
+      <span *ngIf="registerForm.hasError(SERVER_ERROR_KEY, 'nickname')" class="field-error">
+        {{registerForm.get('nickname').getError(SERVER_ERROR_KEY)}}
+        {{'register.nickname.error.server.' + registerForm.get('nickname').getError(SERVER_ERROR_KEY) | translate}}
+      </span>
+      <span class="input-wrapper">
+        <input name="nickname" type="text" formControlName="nickname"
                placeholder="{{'register.nickname.placeholder' | translate}}"/>
         <mat-icon class="input-icon">face</mat-icon>
       </span>
     </label>
     <label>
-      <span class="input-label-text">{{'register.username.hint' | translate}}</span>
-      <span class="input-wrapper error">
-        <input name="username" formControlName="username"
+      <span *ngIf="registerForm.get('username').valid || !registerForm.get('username').value"
+            class="input-label-text">{{'register.username.hint' | translate}}</span>
+      <span *ngIf="registerForm.hasError('maxlength', 'username')" class="field-error">
+          {{'register.username.error.client.maxlength' | translate}}
+      </span>
+      <span *ngIf="registerForm.hasError('minlength', 'username')" class="field-error">
+          {{'register.username.error.client.minlength' | translate}}
+      </span>
+      <span *ngIf="registerForm.hasError('email', 'username')" class="field-error">
+          {{'register.username.error.client.email' | translate}}
+      </span>
+      <span *ngIf="registerForm.hasError(SERVER_ERROR_KEY, 'username')" class="field-error">
+        {{registerForm.get('username').getError(SERVER_ERROR_KEY)}}
+          {{'register.username.error.server.' + registerForm.get('username').getError(SERVER_ERROR_KEY) | translate}}
+      </span>
+      <span class="input-wrapper">
+        <input name="username" type="text" formControlName="username"
                placeholder="{{'register.username.placeholder' | translate}}"/>
         <mat-icon class="input-icon">email</mat-icon>
       </span>
     </label>
     <label>
-      <span class="input-label-text">{{'register.password.hint' | translate}}</span>
+      <span *ngIf="registerForm.get('password').valid || !registerForm.get('password').value"
+            class="input-label-text">{{'register.password.hint' | translate}}</span>
+      <span *ngIf="registerForm.hasError('maxlength', 'password')" class="field-error">
+        {{'register.password.error.client.maxlength' | translate}}
+      </span>
+      <span *ngIf="registerForm.hasError('minlength', 'password')" class="field-error">
+        {{'register.password.error.client.minlength' | translate}}
+      </span>
+      <span *ngIf="registerForm.hasError('pattern', 'password')" class="field-error">
+        {{'register.password.error.client.pattern' | translate}}
+      </span>
+      <span style="color: red">{{JSON.toJSON( registerForm.get('password').errors)}}</span>
+      <span *ngIf="registerForm.hasError(SERVER_ERROR_KEY, 'password')" class="field-error">
+        {{'register.password.error.server.' + registerForm.get('password').getError(SERVER_ERROR_KEY) | translate}}
+      </span>
       <span class="input-wrapper">
-        <input name="password" formControlName="password"
+        <input name="password" formControlName="password" type="password"
                placeholder="{{'register.password.placeholder' | translate}}"/>
         <mat-icon class="input-icon">lock</mat-icon>
       </span>
     </label>
     <button type="submit"
-            [disabled]="!registerForm.valid">
+            [disabled]="!registerForm.valid" ngClass="{'':re}">
       {{'register.button' | translate}}
     </button>
+    <!-- Form content end -->
   </form>
-  <nwen-seperator [showContent]="true">
-    <span class="other-register-options-separator-label">
-      {{'register.separator.content' | translate}}
-    </span>
-  </nwen-seperator>
-  <div class="social-application-container">
-    <mat-icon routerLink="#" class="social-application">email</mat-icon>
-    <mat-icon routerLink="#" class="social-application">email</mat-icon>
-  </div>
+  <!--<nwen-seperator [showContent]="true">-->
+  <!--<span class="other-register-options-separator-label">-->
+  <!--{{'register.separator.content' | translate}}-->
+  <!--</span>-->
+  <!--</nwen-seperator>-->
+  <!--<div class="social-application-container">-->
+  <!--<mat-icon routerLink="#" class="social-application">email</mat-icon>-->
+  <!--<mat-icon routerLink="#" class="social-application">email</mat-icon>-->
+  <!--</div>-->
   <div class="login-link-container">
     <a routerLink="/login">
       {{'register.button.go-to-login' | translate}}
