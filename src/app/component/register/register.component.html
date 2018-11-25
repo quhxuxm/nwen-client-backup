@@ -1,11 +1,11 @@
 <section>
   <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form">
     <!-- Server errors start -->
-    <span *ngIf="registerForm.hasError(CLIENT_ERROR_KEY)" class="global-error">
+    <span *ngIf="registerForm.hasError('clientError')" class="global-error">
       <mat-icon class="alert-icon">error_outline</mat-icon>
       {{'register.error.client' | translate}}
     </span>
-    <span *ngIf="registerForm.hasError(SERVER_ERROR_KEY)" class="global-error">
+    <span *ngIf="registerForm.hasError('serverError')" class="global-error">
       <mat-icon class="alert-icon">error_outline</mat-icon>
       {{'register.error.server' | translate}}
     </span>
@@ -23,8 +23,8 @@
       <span *ngIf="registerForm.hasError('pattern', 'nickname')" class="field-error">
         {{'register.nickname.error.client.pattern' | translate}}
       </span>
-      <span *ngIf="registerForm.hasError(SERVER_ERROR_KEY, 'nickname')" class="field-error">
-        {{registerForm.get('nickname').getError(SERVER_ERROR_KEY)}}
+      <span *ngIf="registerForm.hasError('serverError', 'nickname')" class="field-error">
+        {{registerForm.get('nickname').getError('serverError')}}
         {{'register.nickname.error.server.' + registerForm.get('nickname').getError(SERVER_ERROR_KEY) | translate}}
       </span>
       <span class="input-wrapper">
@@ -45,8 +45,8 @@
       <span *ngIf="registerForm.hasError('email', 'username')" class="field-error">
           {{'register.username.error.client.email' | translate}}
       </span>
-      <span *ngIf="registerForm.hasError(SERVER_ERROR_KEY, 'username')" class="field-error">
-        {{registerForm.get('username').getError(SERVER_ERROR_KEY)}}
+      <span *ngIf="registerForm.hasError('serverError', 'username')" class="field-error">
+        {{registerForm.get('username').getError('serverError')}}
           {{'register.username.error.server.' + registerForm.get('username').getError(SERVER_ERROR_KEY) | translate}}
       </span>
       <span class="input-wrapper">
@@ -67,9 +67,8 @@
       <span *ngIf="registerForm.hasError('pattern', 'password')" class="field-error">
         {{'register.password.error.client.pattern' | translate}}
       </span>
-      <span style="color: red">{{JSON.toJSON( registerForm.get('password').errors)}}</span>
-      <span *ngIf="registerForm.hasError(SERVER_ERROR_KEY, 'password')" class="field-error">
-        {{'register.password.error.server.' + registerForm.get('password').getError(SERVER_ERROR_KEY) | translate}}
+      <span *ngIf="registerForm.hasError('serverError', 'password')" class="field-error">
+        {{'register.password.error.server.' + registerForm.get('password').getError('serverError') | translate}}
       </span>
       <span class="input-wrapper">
         <input name="password" formControlName="password" type="password"

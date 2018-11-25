@@ -16,8 +16,6 @@ import {RegisterResponsePayload} from '../../service/payload/response/register-r
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  readonly SERVER_ERROR_KEY = 'server-error';
-  readonly CLIENT_ERROR_KEY = 'client-error';
   registerForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private executorService: ExecutorService, private router: Router) {
@@ -62,13 +60,13 @@ export class RegisterComponent implements OnInit {
     };
     const clientErrorCallback: ExecutorServiceClientExceptionCallback = error => {
       this.registerForm.setErrors({
-        CLIENT_ERROR_KEY: 'client-connection'
+        clientError: 'client-connection'
       });
       return;
     };
     const serverErrorCallback: ExecutorServiceServerExceptionCallback = error => {
       this.registerForm.setErrors({
-        SERVER_ERROR_KEY: 'unknown'
+        serverError: 'unknown'
       });
       return;
     };
@@ -76,51 +74,51 @@ export class RegisterComponent implements OnInit {
       // Token server errors
       if ('USERNAME_EXIST' === response.payload.code) {
         this.registerForm.controls['username'].setErrors({
-          SERVER_ERROR_KEY: response.payload.code
+          serverError: response.payload.code
         });
         return;
       }
       if ('USERNAME_IS_EMPTY' === response.payload.code) {
         this.registerForm.controls['username'].setErrors({
-          SERVER_ERROR_KEY: response.payload.code
+          serverError: response.payload.code
         });
         return;
       }
       if ('USERNAME_FORMAT_INCORRECT' === response.payload.code) {
         this.registerForm.controls['username'].setErrors({
-          SERVER_ERROR_KEY: response.payload.code
+          serverError: response.payload.code
         });
         return;
       }
       // Password server errors
       if ('PASSWORD_IS_EMPTY' === response.payload.code) {
         this.registerForm.controls['password'].setErrors({
-          SERVER_ERROR_KEY: response.payload.code
+          serverError: response.payload.code
         });
         return;
       }
       if ('PASSWORD_FORMAT_INCORRECT' === response.payload.code) {
         this.registerForm.controls['password'].setErrors({
-          SERVER_ERROR_KEY: response.payload.code
+          serverError: response.payload.code
         });
         return;
       }
       // Nick name server errors
       if ('NICKNAME_IS_EMPTY' === response.payload.code) {
         this.registerForm.controls['nickname'].setErrors({
-          SERVER_ERROR_KEY: response.payload.code
+          serverError: response.payload.code
         });
         return;
       }
       if ('NICKNAME_FORMAT_INCORRECT' === response.payload.code) {
         this.registerForm.controls['nickname'].setErrors({
-          SERVER_ERROR_KEY: response.payload.code
+          serverError: response.payload.code
         });
         return;
       }
       if ('NICKNAME_EXIST' === response.payload.code) {
         this.registerForm.controls['nickname'].setErrors({
-          SERVER_ERROR_KEY: response.payload.code
+          serverError: response.payload.code
         });
         return;
       }
