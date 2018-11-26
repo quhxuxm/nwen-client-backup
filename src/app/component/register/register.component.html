@@ -24,8 +24,7 @@
         {{'register.nickname.error.client.pattern' | translate}}
       </span>
       <span *ngIf="registerForm.hasError('serverError', 'nickname')" class="field-error">
-        {{registerForm.get('nickname').getError('serverError')}}
-        {{'register.nickname.error.server.' + registerForm.get('nickname').getError(SERVER_ERROR_KEY) | translate}}
+        {{'register.nickname.error.server.' + registerForm.get('nickname').getError('serverError') | translate}}
       </span>
       <span class="input-wrapper">
         <input name="nickname" type="text" formControlName="nickname"
@@ -42,12 +41,11 @@
       <span *ngIf="registerForm.hasError('minlength', 'username')" class="field-error">
           {{'register.username.error.client.minlength' | translate}}
       </span>
-      <span *ngIf="registerForm.hasError('email', 'username')" class="field-error">
-          {{'register.username.error.client.email' | translate}}
+      <span *ngIf="registerForm.hasError('pattern', 'username')" class="field-error">
+          {{'register.username.error.client.pattern' | translate}}
       </span>
       <span *ngIf="registerForm.hasError('serverError', 'username')" class="field-error">
-        {{registerForm.get('username').getError('serverError')}}
-          {{'register.username.error.server.' + registerForm.get('username').getError(SERVER_ERROR_KEY) | translate}}
+          {{'register.username.error.server.' + registerForm.get('username').getError('serverError') | translate}}
       </span>
       <span class="input-wrapper">
         <input name="username" type="text" formControlName="username"
