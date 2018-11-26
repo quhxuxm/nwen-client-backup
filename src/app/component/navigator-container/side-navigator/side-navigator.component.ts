@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthenticationRelated} from '../../../service/authentication-related';
 import {SecurityService} from '../../../service/security.service';
 
 @Component({
@@ -6,18 +7,11 @@ import {SecurityService} from '../../../service/security.service';
   templateUrl: './side-navigator.component.html',
   styleUrls: ['./side-navigator.component.scss']
 })
-export class SideNavigatorComponent implements OnInit {
-  constructor(private securityService: SecurityService) {
+export class SideNavigatorComponent extends AuthenticationRelated implements OnInit {
+  constructor(securityService: SecurityService) {
+    super(securityService);
   }
 
   ngOnInit() {
-  }
-
-  logout(): void {
-    this.securityService.secureToken = null;
-  }
-
-  isAuthenticated(): boolean {
-    return this.securityService.authenticatedAuthor != null;
   }
 }

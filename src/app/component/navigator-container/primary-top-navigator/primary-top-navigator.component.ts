@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatSidenav} from '@angular/material';
+import {AuthenticationRelated} from '../../../service/authentication-related';
 import {SecurityService} from '../../../service/security.service';
 
 @Component({
@@ -7,13 +8,14 @@ import {SecurityService} from '../../../service/security.service';
   templateUrl: './primary-top-navigator.component.html',
   styleUrls: ['./primary-top-navigator.component.scss']
 })
-export class PrimaryTopNavigatorComponent implements OnInit {
+export class PrimaryTopNavigatorComponent extends AuthenticationRelated implements OnInit {
   @Input()
   sideNavigator: MatSidenav;
   @Output()
   toggleSecondaryTopNavigatorEvent: EventEmitter<any>;
 
-  constructor(private securityService: SecurityService) {
+  constructor(securityService: SecurityService) {
+    super(securityService);
     this.toggleSecondaryTopNavigatorEvent = new EventEmitter<any>();
   }
 
@@ -26,9 +28,5 @@ export class PrimaryTopNavigatorComponent implements OnInit {
 
   toggleSecondaryTopNavigator() {
     this.toggleSecondaryTopNavigatorEvent.emit();
-  }
-
-  isAuthenticated(): boolean {
-    return this.securityService.authenticatedAuthor != null;
   }
 }

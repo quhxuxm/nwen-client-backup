@@ -2,7 +2,7 @@
   <a mat-list-item routerLink="/login" *ngIf="!isAuthenticated()">
     {{'side-navigator.btn.login-or-register'|translate}}
   </a>
-  <a mat-list-item (click)="logout()" *ngIf="isAuthenticated()">
+  <a mat-list-item (click)="clearAuthentication()" *ngIf="isAuthenticated()">
     {{'side-navigator.btn.logout'|translate}}
   </a>
   <a mat-list-item routerLink="/home">
