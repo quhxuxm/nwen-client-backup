@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {GlobalConstant} from '../../constant';
 import {ExecutorRequest} from '../../service/executor-request';
 import {
   ExecutorService, ExecutorServiceBusinessExceptionCallback, ExecutorServiceClientExceptionCallback, ExecutorServiceServerExceptionCallback,
@@ -15,25 +16,34 @@ import {AuthenticateResponsePayload} from '../../service/payload/response/authen
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm = this.formBuilder.group({
-    username: ['', Validators.required,
-      Validators.max(40),
-      Validators.min(3),
-      Validators.pattern(
-        '^([A-Za-z0-9_\\-\\.])+\\@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$')],
-    password: ['', Validators.required,
-      Validators.max(16),
-      Validators.min(6),
-      Validators.pattern('^.*(?=.{6,})(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*?\\[\\]\\(\\)\\=\\-\\_\\+\\\\\\|\\<\\>\\,\\.\\/]).*$')]
-  });
+  loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private executorService: ExecutorService, private router: Router) {
   }
 
   ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      username: ['', [Validators.required,
+        Validators.maxLength(GlobalConstant.Common.USERNAME_MAX_LENGTH),
+        Validators.minLength(GlobalConstant.Common.USERNAME_MIN_LENGTH),
+        Validators.pattern(GlobalConstant.Common.USERNAME_PATTERN)]],
+      password: ['', [Validators.required,
+        Validators.maxLength(GlobalConstant.Common.PASSWORD_MAX_LENGTH),
+        Validators.minLength(GlobalConstant.Common.PASSWORD_MIN_LENGTH),
+        Validators.pattern(GlobalConstant.Common.PASSWORD_PATTERN)]]
+    });
   }
 
-  public register() {
+  public isControlValid(controlName: string): boolean {
+    const control = this.loginForm.get(controlName);
+    if (control == null) {
+      return false;
+    }
+    const changed = (control.dirty || control.touched);
+    return !(control.invalid && changed);
+  }
+
+  public login() {
     const loginRequest: ExecutorRequest<AuthenticateRequestPayload> = new ExecutorRequest();
     const payload = new AuthenticateRequestPayload();
     payload.username = this.loginForm.value['username'];
@@ -41,42 +51,37 @@ export class LoginComponent implements OnInit {
     loginRequest.payload = payload;
     const successCallback: ExecutorServiceSuccessCallback<AuthenticateResponsePayload> = response => {
       console.log(response.payload);
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/home');
     };
     const clientExceptionCallback: ExecutorServiceClientExceptionCallback = error => {
+      this.loginForm.setErrors({
+        clientError: 'client-connection'
+      });
+      return;
     };
     const serverExceptionCallback: ExecutorServiceServerExceptionCallback = response => {
+      this.loginForm.setErrors({
+        serverError: 'unknown'
+      });
+      return;
     };
     const businessExceptionCallback: ExecutorServiceBusinessExceptionCallback = response => {
       // Token server errors
-      if ('REGISTER_TOKEN_IS_EMPTY_ERROR' === response.payload.code) {
+      if ('USERNAME_IS_EMPTY' === response.payload.code) {
         this.loginForm.controls['username'].setErrors({
           'server': response.payload.code
         });
         return;
       }
-      if ('REGISTER_TOKEN_FORMAT_INCORRECT' === response.payload.code) {
+      if ('PASSWORD_IS_EMPTY' === response.payload.code) {
         this.loginForm.controls['username'].setErrors({
           'server': response.payload.code
         });
         return;
       }
-      if ('REGISTER_TOKEN_EXIST_ERROR' === response.payload.code) {
-        this.loginForm.controls['username'].setErrors({
-          'server': response.payload.code
-        });
-        return;
-      }
-      // Password server errors
-      if ('REGISTER_PASSWORD_IS_EMPTY_ERROR' === response.payload.code) {
-        this.loginForm.controls['password'].setErrors({
-          'server': response.payload.code
-        });
-        return;
-      }
-      if ('REGISTER_PASSWORD_FORMAT_INCORRECT' === response.payload.code) {
-        this.loginForm.controls['password'].setErrors({
-          'server': response.payload.code
+      if ('AUTH_ERROR' === response.payload.code) {
+        this.loginForm.setErrors({
+          authenticationFail: 'authentication-fail'
         });
         return;
       }

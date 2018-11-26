@@ -151,6 +151,10 @@ $MAX_WIDTH9: 330px;
       background-color: $COLOR3;
     }
 
+    button.disable{
+      background-color: $COLOR4;
+    }
+
     @content;
   }
 }

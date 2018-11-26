@@ -81,7 +81,7 @@
       </span>
     </label>
     <button type="submit"
-            [disabled]="!registerForm.valid" ngClass="{'':re}">
+            [disabled]="!registerForm.valid" [ngClass]="{'disable':!registerForm.valid}">
       {{'register.button' | translate}}
     </button>
     <!-- Form content end -->

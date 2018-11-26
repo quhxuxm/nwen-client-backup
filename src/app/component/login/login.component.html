@@ -1,8 +1,36 @@
 <section>
   <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
-
+    <!-- Server errors start -->
+    <span *ngIf="loginForm.hasError('clientError')" class="global-error">
+      <mat-icon class="alert-icon">error_outline</mat-icon>
+      {{'login.error.client' | translate}}
+    </span>
+    <span *ngIf="loginForm.hasError('serverError')" class="global-error">
+      <mat-icon class="alert-icon">error_outline</mat-icon>
+      {{'login.error.server' | translate}}
+    </span>
+    <span *ngIf="loginForm.hasError('authenticationFail')" class="global-error">
+      <mat-icon class="alert-icon">error_outline</mat-icon>
+      {{'login.error.authenticationFail' | translate}}
+    </span>
+    <!-- Server errors end -->
     <label>
-      <span class="input-label-text">{{'login.username.hint' | translate}}</span>
+      <span *ngIf="loginForm.get('username').valid || !loginForm.get('username').value"
+            class="input-label-text">{{'login.username.hint' | translate}}</span>
+      <span *ngIf="loginForm.hasError('maxlength', 'username')" class="field-error">
+          {{'login.username.error.client.maxlength' | translate}}
+      </span>
+      <span *ngIf="loginForm.hasError('minlength', 'username')" class="field-error">
+          {{'login.username.error.client.minlength' | translate}}
+      </span>
+      <span
+        *ngIf="loginForm.hasError('pattern', 'username') && !loginForm.hasError('minlength', 'username') && !loginForm.hasError('maxlength', 'username')"
+        class="field-error">
+          {{'login.username.error.client.pattern' | translate}}
+      </span>
+      <span *ngIf="loginForm.hasError('serverError', 'username')" class="field-error">
+          {{'login.username.error.server.' + loginForm.get('username').getError('serverError') | translate}}
+      </span>
       <span class="input-wrapper error">
         <input name="username" formControlName="username"
                placeholder="{{'login.username.placeholder' | translate}}"/>
@@ -10,15 +38,30 @@
       </span>
     </label>
     <label>
-      <span class="input-label-text">{{'login.password.hint' | translate}}</span>
+       <span *ngIf="loginForm.get('password').valid || !loginForm.get('password').value"
+             class="input-label-text">{{'login.password.hint' | translate}}</span>
+      <span *ngIf="loginForm.hasError('maxlength', 'password')" class="field-error">
+        {{'login.password.error.client.maxlength' | translate}}
+      </span>
+      <span *ngIf="loginForm.hasError('minlength', 'password')" class="field-error">
+        {{'login.password.error.client.minlength' | translate}}
+      </span>
+      <span
+        *ngIf="loginForm.hasError('pattern', 'password') && !loginForm.hasError('minlength', 'password') && !loginForm.hasError('maxlength', 'password')"
+        class="field-error">
+        {{'login.password.error.client.pattern' | translate}}
+      </span>
+      <span *ngIf="loginForm.hasError('serverError', 'password')" class="field-error">
+        {{'login.password.error.server.' + loginForm.get('password').getError('serverError') | translate}}
+      </span>
       <span class="input-wrapper">
-        <input name="password" formControlName="password"
+        <input name="password" formControlName="password" type="password"
                placeholder="{{'login.password.placeholder' | translate}}"/>
         <mat-icon class="input-icon">lock</mat-icon>
       </span>
     </label>
     <button type="submit"
-            [disabled]="!loginForm.valid">
+            [disabled]="!loginForm.valid" [ngClass]="{'disable':!loginForm.valid}">
       {{'login.button' | translate}}
     </button>
   </form>
