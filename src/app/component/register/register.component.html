@@ -20,7 +20,7 @@
       <span *ngIf="registerForm.hasError('minlength', 'nickname')" class="field-error">
         {{'register.nickname.error.client.minlength' | translate}}
       </span>
-      <span *ngIf="registerForm.hasError('pattern', 'nickname')" class="field-error">
+      <span *ngIf="registerForm.hasError('pattern', 'nickname') && !registerForm.hasError('minlength', 'nickname') && !registerForm.hasError('maxlength', 'nickname')" class="field-error">
         {{'register.nickname.error.client.pattern' | translate}}
       </span>
       <span *ngIf="registerForm.hasError('serverError', 'nickname')" class="field-error">
@@ -41,7 +41,7 @@
       <span *ngIf="registerForm.hasError('minlength', 'username')" class="field-error">
           {{'register.username.error.client.minlength' | translate}}
       </span>
-      <span *ngIf="registerForm.hasError('pattern', 'username')" class="field-error">
+      <span *ngIf="registerForm.hasError('pattern', 'username') && !registerForm.hasError('minlength', 'username') && !registerForm.hasError('maxlength', 'username')" class="field-error">
           {{'register.username.error.client.pattern' | translate}}
       </span>
       <span *ngIf="registerForm.hasError('serverError', 'username')" class="field-error">
@@ -62,7 +62,7 @@
       <span *ngIf="registerForm.hasError('minlength', 'password')" class="field-error">
         {{'register.password.error.client.minlength' | translate}}
       </span>
-      <span *ngIf="registerForm.hasError('pattern', 'password')" class="field-error">
+      <span *ngIf="registerForm.hasError('pattern', 'password') && !registerForm.hasError('minlength', 'password') && !registerForm.hasError('maxlength', 'password')" class="field-error">
         {{'register.password.error.client.pattern' | translate}}
       </span>
       <span *ngIf="registerForm.hasError('serverError', 'password')" class="field-error">
