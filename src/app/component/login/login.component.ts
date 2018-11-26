@@ -51,6 +51,8 @@ export class LoginComponent implements OnInit {
     loginRequest.payload = payload;
     const successCallback: ExecutorServiceSuccessCallback<AuthenticateResponsePayload> = response => {
       console.log(response.payload);
+      const secureToken = response.header[GlobalConstant.ExecutorResponseHeaderName.SECURE_TOKEN];
+      localStorage.setItem(GlobalConstant.ExecutorResponseHeaderName.SECURE_TOKEN, secureToken);
       this.router.navigateByUrl('/home');
     };
     const clientExceptionCallback: ExecutorServiceClientExceptionCallback = error => {
