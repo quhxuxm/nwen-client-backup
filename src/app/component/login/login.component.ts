@@ -9,6 +9,7 @@ import {
 } from '../../service/executor.service';
 import {AuthenticateRequestPayload} from '../../service/payload/request/authenticate-request-payload';
 import {AuthenticateResponsePayload} from '../../service/payload/response/authenticate-response-payload';
+import {SecurityService} from '../../service/security.service';
 
 @Component({
   selector: 'nwen-login',
@@ -18,7 +19,8 @@ import {AuthenticateResponsePayload} from '../../service/payload/response/authen
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private executorService: ExecutorService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private executorService: ExecutorService, private securityService: SecurityService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -51,8 +53,7 @@ export class LoginComponent implements OnInit {
     loginRequest.payload = payload;
     const successCallback: ExecutorServiceSuccessCallback<AuthenticateResponsePayload> = response => {
       console.log(response.payload);
-      const secureToken = response.header[GlobalConstant.ExecutorResponseHeaderName.SECURE_TOKEN];
-      localStorage.setItem(GlobalConstant.ExecutorResponseHeaderName.SECURE_TOKEN, secureToken);
+      this.securityService.secureToken = response.header[GlobalConstant.ExecutorResponseHeaderName.SECURE_TOKEN];
       this.router.navigateByUrl('/home');
     };
     const clientExceptionCallback: ExecutorServiceClientExceptionCallback = error => {
