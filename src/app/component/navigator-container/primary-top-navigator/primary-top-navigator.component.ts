@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatSidenav} from '@angular/material';
+import {SecurityService} from '../../../service/security.service';
 
 @Component({
   selector: 'nwen-primary-top-navigator',
@@ -12,7 +13,7 @@ export class PrimaryTopNavigatorComponent implements OnInit {
   @Output()
   toggleSecondaryTopNavigatorEvent: EventEmitter<any>;
 
-  constructor() {
+  constructor(private securityService: SecurityService) {
     this.toggleSecondaryTopNavigatorEvent = new EventEmitter<any>();
   }
 
@@ -25,5 +26,9 @@ export class PrimaryTopNavigatorComponent implements OnInit {
 
   toggleSecondaryTopNavigator() {
     this.toggleSecondaryTopNavigatorEvent.emit();
+  }
+
+  isAuthenticated(): boolean {
+    return this.securityService.authenticatedAuthor != null;
   }
 }

@@ -80,6 +80,7 @@
     transform: translateX(-50%);
     width: 70px;
     cursor: pointer;
+    outline: none;
   }
 
   @include responsive($MAX_WIDTH6) {

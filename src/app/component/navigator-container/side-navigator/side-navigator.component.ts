@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SecurityService} from '../../../service/security.service';
 
 @Component({
   selector: 'nwen-side-navigator',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-navigator.component.scss']
 })
 export class SideNavigatorComponent implements OnInit {
-
-  constructor() { }
+  constructor(private securityService: SecurityService) {
+  }
 
   ngOnInit() {
   }
 
+  logout(): void {
+    this.securityService.secureToken = null;
+  }
+
+  isAuthenticated(): boolean {
+    return this.securityService.authenticatedAuthor != null;
+  }
 }

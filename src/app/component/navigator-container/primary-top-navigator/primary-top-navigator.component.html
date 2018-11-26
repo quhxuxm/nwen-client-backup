@@ -6,11 +6,13 @@
   <span class="show-secondary-top-navigator-btn" (click)="toggleSecondaryTopNavigator()">
         <mat-icon class="icon">apps</mat-icon>
       </span>
-  <span class="logo-container">
+  <span class="logo-container" routerLink="/home">
         <nwen-logo></nwen-logo>
-      </span>
+  </span>
   <span class="flex-spacer"></span>
-  <span class="join-us-label">{{'primary-top-navigator.label.join-us' | translate}}</span>
-  <a class="login-or-register-btn" routerLink="/login">{{'primary-top-navigator.btn.login-or-register' | translate}}</a>
+  <span *ngIf="!isAuthenticated()"
+        class="join-us-label">{{'primary-top-navigator.label.join-us' | translate}}</span>
+  <a *ngIf="!isAuthenticated()" class="login-or-register-btn"
+     routerLink="/login">{{'primary-top-navigator.btn.login-or-register' | translate}}</a>
   <a class="write-article-btn" href="#">{{'primary-top-navigator.btn.write-article' | translate}}</a>
 </mat-toolbar>
