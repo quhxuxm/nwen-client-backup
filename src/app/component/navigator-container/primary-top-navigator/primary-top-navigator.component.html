@@ -14,5 +14,5 @@
         class="join-us-label">{{'primary-top-navigator.label.join-us' | translate}}</span>
   <a *ngIf="!isAuthenticated()" class="login-or-register-btn"
      routerLink="/login">{{'primary-top-navigator.btn.login-or-register' | translate}}</a>
-  <a class="write-article-btn" href="#">{{'primary-top-navigator.btn.write-article' | translate}}</a>
+  <a *ngIf="isAuthenticated()" class="write-article-btn" href="#">{{'primary-top-navigator.btn.write-article' | translate}}</a>
 </mat-toolbar>

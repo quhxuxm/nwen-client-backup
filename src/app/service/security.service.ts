@@ -11,7 +11,9 @@ export class SecurityService {
 
   constructor() {
     this._secureToken = localStorage.getItem(GlobalConstant.StorageKeyName.SECURE_TOKEN_STORAGE_KEY);
-    this._authenticatedAuthor = new AuthenticatedAuthor();
+    if (this._secureToken) {
+      this._authenticatedAuthor = new AuthenticatedAuthor();
+    }
   }
 
   get secureToken(): string | null {
