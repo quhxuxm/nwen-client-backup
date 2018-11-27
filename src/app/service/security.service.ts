@@ -11,9 +11,7 @@ export class SecurityService {
 
   constructor() {
     this._secureToken = localStorage.getItem(GlobalConstant.StorageKeyName.SECURE_TOKEN_STORAGE_KEY);
-    if (this._secureToken) {
-      this._authenticatedAuthor = new AuthenticatedAuthor();
-    }
+    this._authenticatedAuthor = SecurityService.parseAuthenticateAuthorFromToken(this._secureToken);
   }
 
   get secureToken(): string | null {
@@ -29,10 +27,17 @@ export class SecurityService {
     }
     localStorage.setItem(GlobalConstant.StorageKeyName.SECURE_TOKEN_STORAGE_KEY, value);
     this._secureToken = value;
-    this._authenticatedAuthor = new AuthenticatedAuthor();
+    this._authenticatedAuthor = SecurityService.parseAuthenticateAuthorFromToken(value);
   }
 
   get authenticatedAuthor(): AuthenticatedAuthor | null {
     return this._authenticatedAuthor;
+  }
+
+  private static parseAuthenticateAuthorFromToken(secureToken: string | null): AuthenticatedAuthor | null {
+    if (secureToken) {
+      return new AuthenticatedAuthor();
+    }
+    return null;
   }
 }
