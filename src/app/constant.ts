@@ -6,7 +6,7 @@ export module GlobalConstant {
     export const SECURE_TOKEN = 'SECURE_TOKEN';
   }
   export module StorageKeyName {
-    export const SECURE_TOKEN_STORAGE_KEY = 'SECURE_TOKEN';
+    export const AUTHENTICATED_AUTHOR = 'AUTHENTICATED_AUTHOR';
   }
   export module Common {
     export const PASSWORD_PATTERN = /(?=.*[A-Za-z])(?=.*\d)(?=.*[$@!%*#?&])[A-Za-z\d$@!%*#?&]+/;

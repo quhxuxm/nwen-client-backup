@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
     loginRequest.payload = payload;
     const successCallback: ExecutorServiceSuccessCallback<AuthenticateResponsePayload> = response => {
       console.log(response.payload);
-      this.securityService.secureToken = response.header[GlobalConstant.ExecutorResponseHeaderName.SECURE_TOKEN];
+      this.securityService.authenticatedAuthor = response.payload;
       this.router.navigateByUrl('/home');
     };
     const clientExceptionCallback: ExecutorServiceClientExceptionCallback = error => {

@@ -26,9 +26,11 @@ export class ExecutorService {
                                                 businessExceptionCallback: ExecutorServiceBusinessExceptionCallback): void {
     const secureTokenInRequest: string | undefined = executorRequest.header[GlobalConstant.ExecutorRequestHeaderName.SECURE_TOKEN];
     if (!secureTokenInRequest) {
-      const storedSecureToken: string | null = this.securityService.secureToken;
-      if (storedSecureToken != null) {
-        executorRequest.header[GlobalConstant.ExecutorRequestHeaderName.SECURE_TOKEN] = storedSecureToken;
+      if (this.securityService.authenticatedAuthor) {
+        if (this.securityService.authenticatedAuthor.secureToken) {
+          executorRequest.header[GlobalConstant.ExecutorRequestHeaderName.SECURE_TOKEN] =
+            this.securityService.authenticatedAuthor.secureToken;
+        }
       }
     }
     const responseObservable = this.httpClient.post<ExecutorResponse<ResponsePayloadType | ExceptionResponsePayload>>(entryUrl,
@@ -47,7 +49,9 @@ export class ExecutorService {
       }
       const secureToken: string | undefined = executorResponse.header[GlobalConstant.ExecutorResponseHeaderName.SECURE_TOKEN];
       if (secureToken) {
-        this.securityService.secureToken = secureToken;
+        if (this.securityService.authenticatedAuthor) {
+          this.securityService.authenticatedAuthor.secureToken = secureToken;
+        }
       }
       successCallback(<ExecutorResponse<ResponsePayloadType>>executorResponse);
     }, (error: HttpErrorResponse) => {
