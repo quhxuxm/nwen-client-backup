@@ -5,16 +5,10 @@ export abstract class AuthenticationRelated {
   }
 
   isAuthenticated(): boolean {
-    if (!this._securityService.authenticatedAuthor) {
-      return false;
-    }
-    if (!this._securityService.authenticatedAuthor.secureToken) {
-      return false;
-    }
-    return true;
+    return this._securityService.secureToken != null;
   }
 
   clearAuthentication(): void {
-    this._securityService.authenticatedAuthor = null;
+    this._securityService.secureToken = null;
   }
 }

@@ -5,8 +5,11 @@ export module GlobalConstant {
   export module ExecutorResponseHeaderName {
     export const SECURE_TOKEN = 'SECURE_TOKEN';
   }
+  export module ExceptionPayloadCode {
+    export const AUTH_ERROR = 'AUTH_ERROR';
+  }
   export module StorageKeyName {
-    export const AUTHENTICATED_AUTHOR = 'AUTHENTICATED_AUTHOR';
+    export const SECURE_TOKEN = 'SECURE_TOKEN';
   }
   export module Common {
     export const PASSWORD_PATTERN = /(?=.*[A-Za-z])(?=.*\d)(?=.*[$@!%*#?&<>/\,\.\(\)\\\^])[A-Za-z\d$@!%*#?&<>/\,\.\(\)\\\^]+/;

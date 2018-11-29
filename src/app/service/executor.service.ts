@@ -1,6 +1,8 @@
+/* tslint:disable:semicolon */
 /// <reference >
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 import {GlobalConstant} from '../constant';
 import {ExecutorRequest} from './executor-request';
 import {ExecutorResponse} from './executor-response';
@@ -16,21 +18,26 @@ export type ExecutorServiceSuccessCallback<ResponsePayloadType> = (executorRespo
   providedIn: 'root'
 })
 export class ExecutorService {
-  constructor(private httpClient: HttpClient, private securityService: SecurityService) {
+  private defaultBusinessExceptionCallback: ExecutorServiceBusinessExceptionCallback = (executorResponse) => {
+    if (executorResponse.payload.code === GlobalConstant.ExceptionPayloadCode.AUTH_ERROR) {
+      this.router.navigateByUrl('/login');
+    }
+  };
+
+  constructor(private httpClient: HttpClient, private securityService: SecurityService, private router: Router) {
   }
 
   exec<RequestPayloadType, ResponsePayloadType>(entryUrl: string, executorRequest: ExecutorRequest<RequestPayloadType>,
                                                 successCallback: ExecutorServiceSuccessCallback<ResponsePayloadType>,
                                                 clientExceptionCallback: ExecutorServiceClientExceptionCallback,
                                                 serverExceptionCallback: ExecutorServiceServerExceptionCallback,
-                                                businessExceptionCallback: ExecutorServiceBusinessExceptionCallback): void {
+                                                businessExceptionCallback: ExecutorServiceBusinessExceptionCallback =
+                                                  this.defaultBusinessExceptionCallback): void {
     const secureTokenInRequest: string | undefined = executorRequest.header[GlobalConstant.ExecutorRequestHeaderName.SECURE_TOKEN];
     if (!secureTokenInRequest) {
-      if (this.securityService.authenticatedAuthor) {
-        if (this.securityService.authenticatedAuthor.secureToken) {
-          executorRequest.header[GlobalConstant.ExecutorRequestHeaderName.SECURE_TOKEN] =
-            this.securityService.authenticatedAuthor.secureToken;
-        }
+      if (this.securityService.secureToken) {
+        executorRequest.header[GlobalConstant.ExecutorRequestHeaderName.SECURE_TOKEN] =
+          this.securityService.secureToken;
       }
     }
     const responseObservable = this.httpClient.post<ExecutorResponse<ResponsePayloadType | ExceptionResponsePayload>>(entryUrl,
@@ -49,9 +56,7 @@ export class ExecutorService {
       }
       const secureToken: string | undefined = executorResponse.header[GlobalConstant.ExecutorResponseHeaderName.SECURE_TOKEN];
       if (secureToken) {
-        if (this.securityService.authenticatedAuthor) {
-          this.securityService.authenticatedAuthor.secureToken = secureToken;
-        }
+        this.securityService.secureToken = secureToken;
       }
       successCallback(<ExecutorResponse<ResponsePayloadType>>executorResponse);
     }, (error: HttpErrorResponse) => {

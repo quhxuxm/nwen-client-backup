@@ -4,8 +4,7 @@ export class AuthenticateResponsePayload {
   authorUsername: string;
   authorDescription: string;
   authorTags: string[];
-  authorLastLoginDate: Date;
+  authorLastLoginDate: number;
   authorIconImageId: string;
-  secureToken: string;
   authorDefaultAnthologyId: string;
 }
