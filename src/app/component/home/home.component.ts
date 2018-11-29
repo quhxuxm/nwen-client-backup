@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ExecutorService} from '../../service/executor.service';
 import {Card} from '../../vo/card';
 
 @Component({
@@ -7,13 +8,24 @@ import {Card} from '../../vo/card';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  cards: Card[];
+  recentCreatedArticles: Card[];
+  recentUpdatedAnthologies: Card[];
+  properlyLikeArticles: Card[];
+  properlyLikeAnthologies: Card[];
+  hotArticles: Card[];
 
-  constructor() {
-    this.cards = [];
+  constructor(private executorService: ExecutorService) {
+    this.recentCreatedArticles = [];
+    this.recentUpdatedAnthologies = [];
+    this.properlyLikeAnthologies = [];
+    this.properlyLikeArticles = [];
+    this.hotArticles = [];
   }
 
   ngOnInit() {
+    const searchRecentCreateArticlesRequest=
+    this.executorService.exec('/api/article/search', null,() => {
+    });
     for (let i = 0; i < 10; i++) {
       const card = new Card();
       card.title = '文章标题Card title ' + i;
