@@ -9,7 +9,7 @@ export module GlobalConstant {
     export const AUTHENTICATED_AUTHOR = 'AUTHENTICATED_AUTHOR';
   }
   export module Common {
-    export const PASSWORD_PATTERN = /(?=.*[A-Za-z])(?=.*\d)(?=.*[$@!%*#?&])[A-Za-z\d$@!%*#?&]+/;
+    export const PASSWORD_PATTERN = /(?=.*[A-Za-z])(?=.*\d)(?=.*[$@!%*#?&<>/\,\.\(\)\\\^])[A-Za-z\d$@!%*#?&<>/\,\.\(\)\\\^]+/;
     export const NICKNAME_PATTERN = /[\u4e00-\u9fa5\w]+/;
     export const USERNAME_PATTERN = /([A-Za-z0-9_\-\.\u4e00-\u9fa5])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z])+/;
     export const USERNAME_MAX_LENGTH = 40;
