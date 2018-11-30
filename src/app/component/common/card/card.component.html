@@ -1,4 +1,4 @@
-<div class="container" *ngIf="uiModel.initialized">
+<div class="container">
   <div class="coverImg" *ngIf="showCoverImage && uiModel.coverImageUrl"
        [routerLink]="uiModel.coverImageRouterLink"
        [style.background-image]="'url('+uiModel.coverImageUrl+')'">
@@ -25,8 +25,5 @@
       </a>
     </footer>
   </article>
-</div>
-<div class="container" *ngIf="!uiModel.initialized">
-  Loading card content ...
 </div>
 

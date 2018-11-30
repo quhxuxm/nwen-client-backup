@@ -51,6 +51,7 @@ export class ReactiveCardContainerComponent implements OnInit {
           );
       });
     }
+    this.refreshCardColumns();
   }
 
   private refreshCardColumns(): void {

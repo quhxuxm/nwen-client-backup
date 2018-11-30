@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ExecutorService} from '../../../service/executor.service';
 import {CardDataPlaceHolder} from '../../../vo/card-data-place-holder';
 import {CardUiModel} from '../../../vo/card-ui-model';
@@ -11,7 +11,7 @@ import {CardUiModel} from '../../../vo/card-ui-model';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit, AfterViewInit {
+export class CardComponent implements OnInit {
   uiModel: CardUiModel;
   @Input()
   dataPlaceHolder: CardDataPlaceHolder<any>;
@@ -31,14 +31,12 @@ export class CardComponent implements OnInit, AfterViewInit {
     this.showSubTitle = true;
     this.showContent = true;
     this.showCoverImage = true;
+    this.uiModel = new CardUiModel();
     this.initialized = new EventEmitter();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.uiModel = new CardUiModel();
-  }
-
-  ngAfterViewInit(): void {
     this._executorService.exec(this.dataPlaceHolder.url, this.dataPlaceHolder.request, executorResponse => {
       const responsePayload = executorResponse.payload;
       this.uiModel.title = responsePayload[this.dataPlaceHolder.fieldsMapping.title];
