@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Card} from '../../../vo/card';
+import {CardUiModel} from '../../../vo/card-ui-model';
 
 /**
  * Give a card object, it will draw the card as a jumborton.
@@ -11,7 +11,7 @@ import {Card} from '../../../vo/card';
 })
 export class JumbortonCardComponent implements OnInit {
   @Input()
-  card: Card;
+  card: CardUiModel;
   @Input()
   showTitle: boolean;
   @Input()

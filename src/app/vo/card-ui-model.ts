@@ -1,4 +1,5 @@
-export class Card {
+export class CardUiModel {
+  private _initialized: boolean;
   private _title: string | null;
   private _titleRouterLink: string | null;
   private _subTitle: string | null;
@@ -7,6 +8,10 @@ export class Card {
   private _contentRouterLink: string | null;
   private _coverImageUrl: string | null;
   private _coverImageRouterLink: string | null;
+
+  constructor() {
+    this._initialized = false;
+  }
 
   get title(): string | null {
     return this._title;
@@ -70,5 +75,13 @@ export class Card {
 
   set coverImageRouterLink(value: string | null) {
     this._coverImageRouterLink = value;
+  }
+
+  get initialized(): boolean {
+    return this._initialized;
+  }
+
+  set initialized(value: boolean) {
+    this._initialized = value;
   }
 }

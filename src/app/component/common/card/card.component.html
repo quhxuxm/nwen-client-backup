@@ -1,21 +1,20 @@
-<div class="container">
-  <div class="coverImg" *ngIf="showCoverImage && card.coverImageUrl"
-       [routerLink]="card.coverImageRouterLink"
-       [style.background-image]="'url('+card.coverImageUrl+')'">
+<div class="container" *ngIf="uiModel.initialized">
+  <div class="coverImg" *ngIf="showCoverImage && uiModel.coverImageUrl"
+       [routerLink]="uiModel.coverImageRouterLink"
+       [style.background-image]="'url('+uiModel.coverImageUrl+')'">
     <ng-content></ng-content>
   </div>
-
   <article *ngIf="showTitle || showSubTitle">
     <header>
-      <a class="title" [routerLink]="card.titleRouterLink" *ngIf="showTitle">
-        {{card.title}}
+      <a class="title" [routerLink]="uiModel.titleRouterLink" *ngIf="showTitle">
+        {{uiModel.title}}
       </a>
-      <a class="sub-title" [routerLink]="card.subTitleRouterLink" *ngIf="showSubTitle">
-        {{card.subTitle}}
+      <a class="sub-title" [routerLink]="uiModel.subTitleRouterLink" *ngIf="showSubTitle">
+        {{uiModel.subTitle}}
       </a>
     </header>
     <section *ngIf="showContent">
-      {{card.content}}
+      {{uiModel.content}}
     </section>
     <footer>
       <a class="action">
@@ -26,5 +25,8 @@
       </a>
     </footer>
   </article>
+</div>
+<div class="container" *ngIf="!uiModel.initialized">
+  Loading card content ...
 </div>
 

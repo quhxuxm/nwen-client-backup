@@ -1,3 +1,5 @@
+import {CardDataPlaceHolderFieldMapping} from './vo/card-data-place-holder';
+
 export module GlobalConstant {
   export module ExecutorRequestHeaderName {
     export const SECURE_TOKEN = 'SECURE_TOKEN';
@@ -21,5 +23,8 @@ export module GlobalConstant {
     export const PASSWORD_MIN_LENGTH = 8;
     export const NICKNAME_MAX_LENGTH = 12;
     export const NICKNAME_MIN_LENGTH = 2;
+    export const
+      viewArticleSummaryResponsePayloadFieldMapping = new CardDataPlaceHolderFieldMapping('title', 'authorNickname', 'summary',
+        'articleCoverImageId');
   }
 }

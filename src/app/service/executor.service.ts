@@ -29,8 +29,8 @@ export class ExecutorService {
 
   exec<RequestPayloadType, ResponsePayloadType>(entryUrl: string, executorRequest: ExecutorRequest<RequestPayloadType>,
                                                 successCallback: ExecutorServiceSuccessCallback<ResponsePayloadType>,
-                                                clientExceptionCallback: ExecutorServiceClientExceptionCallback,
-                                                serverExceptionCallback: ExecutorServiceServerExceptionCallback,
+                                                clientExceptionCallback?: ExecutorServiceClientExceptionCallback,
+                                                serverExceptionCallback?: ExecutorServiceServerExceptionCallback,
                                                 businessExceptionCallback: ExecutorServiceBusinessExceptionCallback =
                                                   this.defaultBusinessExceptionCallback): void {
     const secureTokenInRequest: string | undefined = executorRequest.header[GlobalConstant.ExecutorRequestHeaderName.SECURE_TOKEN];
@@ -62,11 +62,15 @@ export class ExecutorService {
     }, (error: HttpErrorResponse) => {
       if (error.error instanceof ErrorEvent) {
         console.error('There is a client error happen.');
-        clientExceptionCallback(error.error);
+        if (clientExceptionCallback) {
+          clientExceptionCallback(error.error);
+        }
         return;
       }
       console.error('There is a server error happen.');
-      serverExceptionCallback(error.error);
+      if (serverExceptionCallback) {
+        serverExceptionCallback(error.error);
+      }
     });
   }
 }
