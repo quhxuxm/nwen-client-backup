@@ -17,12 +17,12 @@ export class ReactiveCardContainerComponent implements OnInit {
   @Input()
   maxColumnNumber: number;
   @Input()
-  _cardPlaceHolders: CardDataPlaceHolder<any>[];
-  _columnNumber: number;
-  _cardPlaceHolderColumns: CardDataPlaceHolder<any>[][];
+  cardPlaceHolders: CardDataPlaceHolder<any>[];
+  columnNumber: number;
+  cardColumns: CardDataPlaceHolder<any>[][];
 
   constructor(private breakpointObserver: BreakpointObserver) {
-    this._cardPlaceHolderColumns = [];
+    this.cardColumns = [];
     this.maxColumnNumber = 4;
   }
 
@@ -30,20 +30,23 @@ export class ReactiveCardContainerComponent implements OnInit {
     if (this.maxColumnNumber > 4 || this.maxColumnNumber <= 0) {
       this.maxColumnNumber = 4;
     }
-    this._columnNumber = this.maxColumnNumber;
-    if (this._cardPlaceHolders.length < this._columnNumber) {
-      this._columnNumber = this._cardPlaceHolders.length;
+    this.columnNumber = this.maxColumnNumber;
+    if (!this.cardPlaceHolders) {
+      return;
+    }
+    if (this.cardPlaceHolders.length < this.columnNumber) {
+      this.columnNumber = this.cardPlaceHolders.length;
       this.BREAKPOINT_COLUMN_NUMBER.forEach((v, k, m) => {
         this.breakpointObserver.observe(k)
           .subscribe(
             () => {
               if (this.breakpointObserver.isMatched(k)) {
-                this._columnNumber = v;
-                if (this._columnNumber > this.maxColumnNumber) {
-                  this._columnNumber = this.maxColumnNumber;
+                this.columnNumber = v;
+                if (this.columnNumber > this.maxColumnNumber) {
+                  this.columnNumber = this.maxColumnNumber;
                 }
-                if (this._columnNumber > this._cardPlaceHolders.length) {
-                  this._columnNumber = this._cardPlaceHolders.length;
+                if (this.columnNumber > this.cardPlaceHolders.length) {
+                  this.columnNumber = this.cardPlaceHolders.length;
                 }
                 this.refreshCardColumns();
               }
@@ -51,17 +54,16 @@ export class ReactiveCardContainerComponent implements OnInit {
           );
       });
     }
-    this.refreshCardColumns();
   }
 
-  private refreshCardColumns(): void {
-    this._cardPlaceHolderColumns = [];
-    for (let i = 0; i < this._columnNumber; i++) {
-      this._cardPlaceHolderColumns.push([]);
+  public refreshCardColumns(): void {
+    this.cardColumns = [];
+    for (let i = 0; i < this.columnNumber; i++) {
+      this.cardColumns.push([]);
     }
-    for (let i = 0; i < this._cardPlaceHolders.length; i++) {
-      const columnIndex = i % this._columnNumber;
-      this._cardPlaceHolderColumns[columnIndex].push(this._cardPlaceHolders[i]);
+    for (let i = 0; i < this.cardPlaceHolders.length; i++) {
+      const columnIndex = i % this.columnNumber;
+      this.cardColumns[columnIndex].push(this.cardPlaceHolders[i]);
     }
   }
 }

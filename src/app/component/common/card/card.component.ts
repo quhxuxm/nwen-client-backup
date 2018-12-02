@@ -16,7 +16,7 @@ export class CardComponent implements OnInit {
   @Input()
   dataPlaceHolder: CardDataPlaceHolder<any>;
   @Output()
-  initialized: EventEmitter<CardUiModel>;
+  modelReady: EventEmitter<CardUiModel>;
   @Input()
   showTitle: boolean;
   @Input()
@@ -32,7 +32,7 @@ export class CardComponent implements OnInit {
     this.showContent = true;
     this.showCoverImage = true;
     this.uiModel = new CardUiModel();
-    this.initialized = new EventEmitter();
+    this.modelReady = new EventEmitter();
   }
 
   ngOnInit(): void {
@@ -44,7 +44,7 @@ export class CardComponent implements OnInit {
       this.uiModel.subTitle = responsePayload[this.dataPlaceHolder.fieldsMapping.subTitle];
       this.uiModel.coverImageUrl = responsePayload[this.dataPlaceHolder.fieldsMapping.coverImageUrl];
       this.uiModel.initialized = true;
-      this.initialized.emit(this.uiModel);
+      this.modelReady.emit(this.uiModel);
     });
   }
 }

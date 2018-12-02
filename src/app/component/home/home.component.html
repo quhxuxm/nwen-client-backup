@@ -1,11 +1,5 @@
-<nwen-reactive-card-container [_cardPlaceHolders]="recentCreatedArticles" [maxColumnNumber]="4">
+<nwen-reactive-card-container
+  [cardPlaceHolders]="recentCreatedArticles | async"
+  [maxColumnNumber]="4">
 </nwen-reactive-card-container>
-<!--<nwen-jumborton-card [card]="recentCreatedArticles[0]"></nwen-jumborton-card>-->
-<!--<nwen-reactive-card-container [cards]="recentCreatedArticles" [maxColumnNumber]="4">-->
-<!--</nwen-reactive-card-container>-->
-<!--<nwen-jumbotron [backgroundImageUrl]="recentCreatedArticles[0].coverImageUrl"></nwen-jumbotron>-->
-<!--<nwen-seperator [showContent]="true">-->
-<!--<a class="circle_image test" [style.background-image]="'url('+recentCreatedArticles[0].coverImageUrl+')'"></a>-->
-<!--</nwen-seperator>-->
-<!--<nwen-reactive-card-container [cards]="recentCreatedArticles" [maxColumnNumber]="4">-->
-<!--</nwen-reactive-card-container>-->
+

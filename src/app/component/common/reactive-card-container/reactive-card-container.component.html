@@ -1,8 +1,7 @@
 <div class="container">
-  <section class="column" [style.width.%]="100/_columnNumber"
-           *ngFor="let column of _cardPlaceHolderColumns; let i = index">
+  <section class="column" [style.width.%]="100/columnNumber"
+           *ngFor="let column of cardColumns; let i = index">
     <nwen-card *ngFor="let card of column" [dataPlaceHolder]="card">
-      Content is loading ...
     </nwen-card>
   </section>
 </div>
